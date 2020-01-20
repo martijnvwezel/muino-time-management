@@ -1,12 +1,38 @@
 version: '2'
 
 services:
+  nginx:
+    image: jwilder/nginx-proxy
+    restart: always
+    container_name: nginx-proxy
+    ports:
+      - "80:80"
+      - "443:443"
+    labels:
+      - 'com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy=true'
+    environment:
+      - ENABLE_IPV6=true
+    volumes:
+      - '/var/run/docker.sock:/tmp/docker.sock:ro'
+      - '/srv/nginx/certs:/etc/nginx/certs:ro'
+      - '/srv/nginx/vhost.d:/etc/nginx/vhost.d'
+      - '/usr/share/nginx/html'
+      - '/srv/nginx/conf.d:/etc/nginx/conf.d'
+
+  nginx-proxy2:
+    image: jrcs/letsencrypt-nginx-proxy-companion
+    restart: always
+    container_name: letsencrypt-nginx-proxy-companion
+    volumes_from:
+      - nginx
+    volumes:
+      - '/srv/nginx/certs:/etc/nginx/certs:rw'
+      - '/var/run/docker.sock:/var/run/docker.sock:ro'
+
   mongo:
     image: mongo:latest
     privileged: true
     restart: always
-    ports:
-      - '27017:27017'
     volumes:
       - '/srv/mongodb:/data/db'
 
@@ -41,6 +67,5 @@ services:
          - nginx
          - mongo
          - redis
-         - registerydocker
        volumes:
-          - '/srv/muino/avatars:/usr/src/app/dist/muino/assets/img/avatars/'
+          - '/srv/muino/avatars:/usr/src/app/dist/muino/assets/img/avatars/' # check if this is the directory you want

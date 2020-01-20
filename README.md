@@ -34,8 +34,12 @@ npm run start # This command build the frontend and start the backend
 ```
 
 ## Production
+### Build a docker
 For the production of pre-build docker on docker-hub.
 ``` bash 
 ./build_docker.sh
 
 ```
+
+### Run on the docker
+There are many environments variables, so it will be logical to add those in a docker compose file. Please, checkout docker compose and the `docker-compose.yml`. The  docker compose 
