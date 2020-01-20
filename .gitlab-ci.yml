@@ -4,7 +4,7 @@ services:
 
 variables:
   GIT_SUBMODULE_STRATEGY: recursive
-  DOCKER_TLS_CERTDIR: ""
+  DOCKER_TLS_CERTDIR: "" # TODO This is a temp fix
 
 before_script:
   - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD"
