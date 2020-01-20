@@ -1,0 +1,46 @@
+version: '2'
+
+services:
+  mongo:
+    image: mongo:latest
+    privileged: true
+    restart: always
+    ports:
+      - '27017:27017'
+    volumes:
+      - '/srv/mongodb:/data/db'
+
+  redis:
+    image: redis:latest
+    privileged: true
+    restart: always
+
+  timemuinonl: 
+       image: muino/time-management:latest
+       restart: always
+       privileged: true
+       environment:
+         - NODE_ENV=production
+         - SERVER_PORT=80
+         - JWT_SECRET=jaoipdfjaiojfefj2po3ij4i2je=
+         - MONGO_HOST=mongodb://mongo/muinotimeaccounting
+         - REDIS_HOST=redis
+         - REDIS_PORT=6379
+         - VIRTUAL_HOST=time.muino.nl
+         - VIRTUAL_PORT=80
+         - LETSENCRYPT_HOST=time.muino.nl
+         - LETSENCRYPT_EMAIL=admin@muino.nl
+         - SMTP_HOST=mail.muino.nl
+         - SMTP_PORT=587
+         - SMTP_SECURE=false 
+         - SMTP_USER=no-reply@muino.nl
+         - SMTP_PASS=BIEEEMBLAAT
+         #- MONGO_USER=somemongdbuser
+         #- MONGO_PWD=jpkoasjggrporeno2345
+       depends_on:
+         - nginx
+         - mongo
+         - redis
+         - registerydocker
+       volumes:
+          - '/srv/muino/avatars:/usr/src/app/dist/muino/assets/img/avatars/'
