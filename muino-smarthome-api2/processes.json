@@ -1,0 +1,16 @@
+{
+    "apps": [
+        {
+            "name": "api",
+            "script": "server/index.js",
+            "merge_logs": true,
+            "max_restarts": 20,
+            "instances": 0,
+            "max_memory_restart": "200M",
+            "env": {
+                "PORT": 80,
+                "NODE_ENV": "production"
+            }
+        }
+    ]
+}

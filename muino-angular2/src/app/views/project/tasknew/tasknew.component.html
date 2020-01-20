@@ -1,0 +1,78 @@
+<div class="col-12-md col-7-lg">
+  <div class="card">
+    <div class="card-header">New Task </div>
+    <div class="card-body">
+      <form [formGroup]="NewTaskForm" class="form-position" (ngSubmit)="NewTask()">
+        <div class="row">
+          <div class="col-6">
+            <label for="task_name"><span>Task name</span></label>
+            <input type="text" formControlName="task_name" placeholder="task name" class="form-control input-lg"
+              [ngClass]="{ 'is-invalid': submitted && (f.task_name.errors ||  error_submit )}" />
+          </div>
+
+
+          <div class="col-3">
+            <label for="start_date"><span>Start date</span></label>
+            <input type="date" formControlName="start_date" placeholder="..-..-...." class="form-control input-lg"
+              [ngClass]="{ 'is-invalid': submitted && (f.start_date.errors ||  error_submit )}" />
+          </div>
+
+     
+          <div class="col-3">
+            <label for="due_date"><span>Due date</span></label>
+            <input type="date" formControlName="due_date" placeholder="..-..-...." class="form-control input-lg"
+              [ngClass]="{ 'is-invalid': submitted && (f.due_date.errors ||  error_submit )}" />
+          </div>
+        </div>
+
+        <br />
+
+
+    
+          <label for="description"><span>Task description</span></label>
+          <textarea formControlName="description" placeholder="Max length 250..." class="form-control" rows="3"
+            maxlength="250" [ngClass]="{ 'is-invalid': submitted && (f.description.errors ||  error_submit )}"></textarea>
+        
+        <br /> 
+
+        <div class="row">
+          <label class="col-sm-4  col-xl-4 col-form-label" for="multiple-select">Status</label>
+          <div class="col-sm-4  col-xl-4">
+            <select id="statusSelect2" name="statusSelect2" [(ngModel)]="statusSelect2" [ngModelOptions]="{standalone: true}">
+              <option *ngFor="let StatusType of StatusType$" [value]="StatusType"> {{StatusType}} </option>
+            </select>
+          </div>
+        </div>
+
+
+
+
+
+
+        <div class="form-group">
+          <div *ngIf="error_submit" [ngStyle]="{'color': 'red', 'font-weight': 'bold'}">
+            <div *ngIf="error_submit">{{error_string}} </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <button [disabled]="loading" class="btn btn-primary">save</button>
+          <img *ngIf="loading" class="pl-3" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+          <a routerLink="/projects/" routerLinkActive="active" class="btn btn-link">Cancel</a>
+        </div>
+        <!-- 
+        <input type="submit" name="commit" value="Create task" class="btn btn-success task-submit"
+          data-track-label="blank_task" data-track-event="click_button" data-track-property="create_task"
+          data-track-value="" data-disable-with="Create task">
+        <a class="btn btn-cancel" data-track-label="blank_task" data-track-event="click_button" data-track-property="cancel"
+          href="/tasks">Cancel</a> -->
+
+      </form>
+
+
+
+
+    </div>
+  </div>
+</div>
+<!-- </div> -->

@@ -1,0 +1,185 @@
+<div class="col-12-md col-7-lg">
+  <div class="card">
+    <div class="card-header">New Project </div>
+    <div class="card-body">
+      <form [formGroup]="NewProjectForm" class="form-position" (ngSubmit)="NewProject()">
+        <div class="row">
+          <div class="col-6">
+            <label for="project_name"><span>Project name</span></label>
+            <input type="text" formControlName="project_name" placeholder="My awsome project"
+              class="form-control input-lg"
+              [ngClass]="{ 'is-invalid': submitted && (f.project_name.errors ||  error_submit )}" />
+          </div>
+
+
+
+          <!-- <p>Example of the range selection</p> -->
+
+          <!-- 
+          <ng-template #t let-date let-focused="focused">
+            <span class="custom-day"
+                  [class.focused]="focused"
+                  [class.range]="isRange(date)"
+                  [class.faded]="isHovered(date) || isInside(date)"
+                  (mouseenter)="hoveredDate = date"
+                  (mouseleave)="hoveredDate = null">
+              {{ date.day }}
+            </span>
+          </ng-template> -->
+
+          <!-- <hr> -->
+
+          <!-- <pre>From: {{ fromDate | json }} </pre> -->
+          <!-- <pre>To: {{ toDate | json }} </pre> -->
+
+<!-- 
+          <div class="col-6">
+              <mat-form-field class="input-date-form">
+                <input matInput type="date" placeholder="Start date" [(ngModel)]="time_start">
+              </mat-form-field>
+    
+              <mat-form-field class="input-date-form">
+                <input matInput type="date" placeholder="Due date" [(ngModel)]="time_due">
+              </mat-form-field>
+            </div> -->
+  
+      
+          <div class="col-3">
+            <label for="start_date"><span>Start date</span></label>
+            <input type="date" formControlName="start_date" placeholder="..-..-...." class="form-control input-lg"
+              [ngClass]="{ 'is-invalid': submitted && (f.start_date.errors ||  error_submit )}" />
+          </div>
+
+          <div class="col-3">
+            <label for="due_date"><span>Due date</span></label>
+            <input type="date" formControlName="due_date" placeholder="..-..-...." class="form-control input-lg"
+              [ngClass]="{ 'is-invalid': submitted && (f.due_date.errors ||  error_submit )}" />
+          </div>
+        </div>
+
+        <br />
+
+
+
+        <label for="project_customer"><span>Project customer</span></label>
+        <input type="text" formControlName="project_customer" placeholder="Customer like Muino or Black Betty..."
+          class="form-control input-lg"
+          [ngClass]="{ 'is-invalid': submitted && (f.project_customer.errors ||  error_submit )}" />
+
+        <br />
+
+
+        <label for="description"><span>Project description</span></label>
+        <textarea formControlName="description" placeholder="Max length 250..." class="form-control" rows="3"
+          maxlength="250" [ngClass]="{ 'is-invalid': submitted && (f.description.errors ||  error_submit )}"></textarea>
+
+        <br /> <br />
+
+        <!-- <div class="form-group">
+          <label class="label-bold" for="project_visibility_level">Visibility Level <strong>[Kapot...]</strong>
+            <a aria-label="Documentation for Visibility Level" target="_blank" rel="noopener noreferrer"><span
+                class="fa fa-question-circle"></span>
+            </a>
+          </label>
+
+          <div class="form-check">
+            <input class="form-check-input" type="radio" [value]="1" checked="checked" name="project_visibility_level_0"
+              for="project_visibility_level_0">
+            <label class="form-check-label"><span class="fa fa-lock fa-fw"></span>Private
+              <div class=" text-muted">Project access must be granted explicitly to each user.</div>
+            </label>
+          </div> -->
+
+<!-- 
+          <div class="form-check">
+            <input class="form-check-input" type="radio" [value]="0" name="project_visibility_level_0"
+              for="project_visibility_level_10">
+            <label class="form-check-label"><span class="fa fa-shield fa-fw"></span>Internal
+              <div class=" text-muted">The project can be accessed by any logged in user.</div>
+            </label>
+          </div> -->
+
+        <!-- </div> -->
+        <!--end form group -->
+
+        <br />
+
+<!-- 
+        <div class="row">
+          <label class="col-sm-4  col-xl-4 col-form-label" for="multiple-select">Enable here the private mode</label>
+          <div class="col-3">
+            <label class="switch switch-label switch-danger">
+              <input type="checkbox" [(ngModel)]="privateCheckbox1" class="switch-input" unchecked
+                [ngModelOptions]="{standalone: true}">
+              <span class="switch-slider" data-checked="On" data-unchecked="Off"></span>
+            </label>
+          </div>
+        </div> -->
+
+        <!-- <div class="row">
+          <label class="col-sm-4  col-xl-4 col-form-label" for="multiple-select">Status</label>
+          <div class="col-sm-4  col-xl-4">
+            <select id="statusSelect1" name="statusSelect1" [(ngModel)]="statusSelect1"
+              [ngModelOptions]="{standalone: true}">
+              <option *ngFor="let StatusType of StatusType$" [value]="StatusType"> {{StatusType}} </option>
+            </select>
+          </div>
+        </div> -->
+
+
+        <!-- <div class="row">
+          <label class="col-sm-4  col-xl-4 col-form-label" for="multiple-select">Assigned</label>
+          <div class="col-sm-4  col-xl-4">
+            <select [(ngModel)]="assignedSelect1"
+              [ngModelOptions]="{standalone: true}">
+              <option *ngFor="let assigned of assigned$" [value]="assigned.assigned_id"> {{assigned.name}} </option>
+            </select>
+          </div>
+        </div> -->
+
+        <div class="row">
+          <!-- Account status -->
+          <mat-form-field class="col-12 col-md-3">
+              <mat-label>Project status </mat-label>  
+              <mat-select id="statusSelect1" name="statusSelect1" [(ngModel)]="statusSelect1" [ngModelOptions]="{standalone: true}">
+                  <mat-option *ngFor="let accountStatus of StatusType$" [value]="accountStatus.name">
+                      {{accountStatus.name}} <small> - {{  accountStatus.description}}</small>
+                  </mat-option>
+              </mat-select>
+          </mat-form-field> 
+      </div>
+
+      <div class="row">
+         <!-- Select/assign users -->
+        <mat-form-field  class="col-12 col-md-3">
+            <mat-label>Assigned users</mat-label>
+            <mat-select [(ngModel)]="assignedSelect1"  multiple [ngModelOptions]="{standalone: true}">
+              <mat-option  *ngFor="let assigned of assigned$" [value]="assigned._id">{{assigned.username}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+
+
+        <div class="form-group">
+          <div *ngIf="error_submit" [ngStyle]="{'color': 'red', 'font-weight': 'bold'}">
+            <div *ngIf="error_submit">{{error_string}} </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <button [disabled]="loading" class="btn btn-primary">Save</button>
+          <img *ngIf="loading" class="pl-3"
+            src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+          <a routerLink="/projects" routerLinkActive="active" class="btn btn-link">Cancel</a>
+        </div>
+
+      </form>
+
+
+
+
+    </div>
+  </div>
+</div>
+<!-- </div> -->

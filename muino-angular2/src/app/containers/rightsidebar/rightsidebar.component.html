@@ -1,0 +1,51 @@
+<aside class="aside-menu">
+  <ul class="nav nav-tabs" role="tablist">
+    <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#timeline" role="tab"><i class="icon-list"></i></a></li>
+    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#messages" role="tab"><i class="icon-speech"></i></a></li>
+    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#settings" role="tab"><i class="icon-settings"></i></a></li>
+  </ul><!-- Tab panes-->
+  <div class="tab-content">
+    <div class="tab-pane active" id="timeline" role="tabpanel">
+
+      <!-- <div class="list-group list-group-accent">
+        <div class="list-group-item list-group-item-accent-secondary bg-light text-center font-weight-bold text-muted text-uppercase small">Today</div>
+        <div class="list-group-item list-group-item-accent-warning list-group-item-divider">
+          <div class="avatar float-right"><img class="img-avatar" src="assets/img/avatars/0.jpg" alt="admin@bootstrapmaster.com" /></div>
+          <div>Meeting with<strong> Martijn</strong></div><small class="text-muted mr-3"><i class="icon-calendar"></i> 
+            9 - 6pm</small><small class="text-muted"><i class="icon-location-pin"></i>  Delft, NL</small>
+        </div>
+      </div>
+      <hr /> -->
+      <div *ngIf="role_exist" class="p-3">
+        <h6>System Utilization</h6>
+        <div class="text-uppercase mb-1 mt-4"><small><b>CPU Usage</b></small></div>
+        <div class="progress progress-xs">
+          <div class="progress-bar" [ngClass]="cpu1color" role="progressbar" [style.width]="cpu1" aria-valuenow="25"
+            aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        <small class="text-muted">{{status_cpu1}}</small>
+
+        <div class="text-uppercase mb-1 mt-2"><small><b>Memory Usage</b></small></div>
+        <div class="progress progress-xs">
+          <div class="progress-bar" [ngClass]="mem1color" role="progressbar" [style.width]="mem1" aria-valuenow="70"
+            aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        <small class="text-muted">{{status_mem1}}</small>
+        
+        <div class="text-uppercase mb-1 mt-2"><small><b>SSD 1 Usage</b></small></div>
+        <div class="progress progress-xs">
+          <div class="progress-bar" [ngClass]="ssd1color" role="progressbar" [style.width]="ssd1" aria-valuenow="95"
+            aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        <small class="text-muted">{{status_ssd1}}</small>
+        
+        <div class="text-uppercase mb-1 mt-2"><small><b>HDD 1 Usage</b></small></div>
+        <div class="progress progress-xs">
+          <div class="progress-bar" [ngClass]="hdd1color" role="progressbar" [style.width]="hdd1" value="25"
+            aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        <small class="text-muted">{{status_hdd1}}</small>
+      </div>
+    </div>
+  </div>
+</aside>

@@ -1,0 +1,46 @@
+<div class="animated fadeIn ">
+  <div class="card"    >
+
+
+    <div class="card-header" > All sensor data </div>
+
+    <div class="card-body" >
+      <div class="col-md-4 offset-md-0">
+        <h4 class="card-title mb-0">Warning </h4>
+        <div class="small text-muted">warnings and errors</div>
+      </div>
+      <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-responsive table-striped table-hover">
+        <thead>
+  
+          <tr>
+            <th><a class="text-nowrap">createdAt </a></th>
+            <th><a class="text-nowrap">source</a></th>
+            <th><a class="text-nowrap">type</a></th>
+            <th><a class="text-nowrap">causedBy</a></th>            
+            <!-- <th><a class="text-nowrap">seen</a></th> -->
+            <th><a class="text-nowrap">extra</a></th>           
+          </tr>
+        </thead>  
+        <tbody *ngIf="warnings$?.length != 0">
+        <tr *ngFor="let warning of warnings$">
+          <td>{{ warning.createdAt}}</td>
+          <td>{{ warning.source}}</td>
+          <td>{{ warning.type}}</td>
+          <td>{{ warning.causedBy}}</td>   
+          <!-- <td>false</td> -->
+          <!-- <td>{{ warning.seen}}</td> -->          
+          <td>{{ warning.extra}}</td>
+        </tr>
+
+      </tbody>
+      <tbody *ngIf="warnings$?.length == 0">
+        <tr>
+          <td colspan="6" class="no-data-available">No data!</td>
+        </tr>
+      <tbody>
+
+      </table>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,64 @@
+<div class="animated fadeIn ">
+    <div class="card">
+        <div class="card-header"> Report generator </div>
+        <div class="card-body">
+
+
+            <div class="row">
+                <mat-form-field class="col-12 col-md-4">
+                    <mat-label>Select template </mat-label>
+                    <mat-select id="templateSelect1" name="templateSelect1" [(value)]="templateSelect1"  multiple required>
+                        <mat-option *ngFor="let template of TemplateType$" [value]="template"> {{ template }} </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+
+            <div class="row">
+                <mat-form-field class="col-12 col-md-4">
+                    <mat-label>Select user(s)</mat-label>
+                    <mat-select [(value)]="assignedSelect1"  multiple required>
+                        <mat-option *ngFor="let assigned of multiSelectUsers$" [value]="assigned._id"> {{ assigned.username }} </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+
+            <div class="row">
+                <mat-form-field class="col-12 col-md-4" >
+                    <mat-label>Pick year(s) </mat-label>
+                    <mat-select [(value)]="yearSelect1"  multiple required>
+                        <mat-option *ngFor="let year of YearType$" [value]="year"> {{ year }} </mat-option>
+                    </mat-select>
+                </mat-form-field>     
+                    
+                    <!-- <div class="col-md-3">
+                        <input type="button" class="btn btn-outline-dark" value="Generate filename" (click)="generate_filename()" />
+                    </div> -->
+            </div>
+
+
+            <!-- <div class="row">
+                <mat-form-field class="col-12 col-md-6">
+                    <mat-label>Filename</mat-label>
+                    <input matInput type="text" [value]="filename" placeholder="filename" required/>
+                </mat-form-field>
+
+            </div> -->
+
+            <div class="row">
+                <div class="col-12 col-md-7">
+                <p>When multiple users or years are selected, multiple files will be downloaded. If your browser gives a warning multiple files are being downloaded: press accept</p>
+                <p> In normal browsers there is a info button in the url, where you can enable it (if you pressed the wrong button)</p>
+            </div>
+    	    </div>
+
+            <div class="row">
+                <div class="col-12 col-md-4">
+                    <input type="button" class="btn btn-outline-dark" value="Get report(s)" (click)="download_reports()" />
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

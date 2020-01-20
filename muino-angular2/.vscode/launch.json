@@ -1,0 +1,42 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+        
+    "configurations": [
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Launch Chrome against localhost",
+            "url": "http://localhost:4040",
+            "webRoot": "${workspaceFolder}"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch Program",
+            "program": "${workspaceFolder}"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch test",
+            "program": "${workspaceFolder}\\src\\app\\views\\prikklok\\test_prikclock.js"
+        }
+        ,
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch prikklok test",
+            "program": "${workspaceFolder}\\src\\app\\views\\prikklok\\test_prikclock_save.js"
+        }
+        ,
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch prikklok report",
+            "program": "${workspaceFolder}\\src\\app\\views\\reports\\test_scrips\\test.js"
+        }
+    ]
+}

@@ -1,0 +1,89 @@
+<div class="form-position app-body">
+    <main class="main d-flex align-items-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 mx-auto">
+                    <div class="card-group">
+                        <div class="card p-4">
+                            <div class="card-body">
+                                <form [formGroup]="loginForm" class="form-position" (ngSubmit)="login()">
+                                    <h1>Login</h1>
+                                    <p class="text-muted">Sign In to your account</p>
+                                    <div class="form-group">
+                                        <label for="email">Username/Email</label>
+                                        <input type="text" formControlName="email" class="form-control" autocapitalize="off"
+                                            [ngClass]="{ 'is-invalid': submitted && (f.email.errors ||  error_submit )}" />
+                                        <div *ngIf="submitted && (f.email.errors||  error_submit)" class="invalid-feedback">
+                                            <div *ngIf="f.email.errors">email is required</div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="password">Password</label>
+                                        <input type="password" formControlName="password" class="form-control"
+                                            [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                                        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                                            <div *ngIf="f.password.errors.required">Password is required</div>
+                                        </div>
+
+
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <div *ngIf="error_submit" [ngStyle]="{'color': 'red', 'font-weight': 'bold'}">
+                                            <div *ngIf="error_submit">{{error_string}} </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <a [routerLink]="['/password-reset']" class="btn btn-link">Forgot password?</a>
+                                    </div>
+                                    <div class="form-group">
+                                        <button [disabled]="loading" class="btn btn-primary " >Login</button>
+                                        <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+                                        <a [routerLink]="['/register']" class="btn btn-link">Register</a>
+                                    </div>
+
+
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+<!-- 
+<div class="container align-items-center">
+
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+
+            <div class="wrap">
+                <div class="cube">
+
+                    <div class="front">
+                        <p>
+                            <i class="icon-rocket icon-4x"></i>
+                        </p>
+                    </div>
+                    <div class="back">
+                        <p>
+                            <i class="icon-rocket icon-4x"></i>
+                        </p>
+                    </div>
+                    <div class="top"></div>
+                    <div class="bottom">
+                        <p>
+                            <i class="icon-rocket icon-4x"></i>
+                        </p>
+                    </div>
+                    <div class="left"></div>
+                    <div class="right"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div> -->

@@ -1,0 +1,162 @@
+<div class="animated fadeIn ">
+  <div class="col-8-md col-7-lg">
+    <div class="card width-card">
+      <div class="card-header"> Projects <div class="small text-muted">Only active projects of an user are visable in Prikklok.</div>
+      </div>
+
+
+
+      <div class="card-body">
+        <div class="row">
+        <div class="col-12"> 
+          
+     
+          <mat-form-field class="float-left" >
+            <mat-label>Pick year </mat-label>
+            <mat-select [(value)]="thisyear" (selectionChange)="change_year_project()" disableOptionCentering>
+              <mat-option *ngFor="let yearTemp of year_array" [value]="yearTemp">
+                {{yearTemp}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+
+          <input style="float: right;" type="button" routerLink="/projects/new" routerLinkActive="active" class="btn btn-outline-dark" value="Add project" />
+        </div>
+        </div>
+        <div class="row">
+            
+            <!-- <br />style="float: right; <br />
+           -->
+
+ <hr /> 
+
+            <table  class="table" *ngIf="projects$">
+            <thead>
+              <tr>
+                <th><a >Project name</a></th>  
+                <th><a >Status</a></th>              
+                <th><a >Project customer</a></th>
+                <th><a >Description</a></th>
+                
+                <!-- <th><a class="small text-muted">private</a></th> -->
+                <th>
+                 <!--  <div class="col-6 width-tm">
+                  <a class="small text-muted">Time</a>
+                </div> -->
+                <!-- <div class="col-6 width-tm"> -->
+                  <div class="row">
+                  <a > Time start </a>
+                </div>
+                <div class="row">
+                  <a>Time due </a>
+                </div>
+              <!-- </div> -->
+              </th>
+              <th><a class="text-nowrap">Edit Project</a></th>
+                <!-- <th><a class="small text-muted">time_due</a></th> -->
+                <!-- <th><a class="small text-muted">creater_id</a></th> -->
+                <!-- <th><a class="small text-muted">assigned</a></th> -->
+                <!-- <th><a class="small text-muted">sub_tasks</a></th> -->
+                <!-- <th><a class="small text-muted">costs</a></th> -->
+                <!-- <th><a class="small text-muted">createdAt</a></th> -->
+                <!-- <th><a class="small text-muted">Remove project</a></th> -->
+              </tr>
+            </thead>
+            <tbody *ngIf="projects$?.length != 0">
+              <tr class="" *ngFor="let project of projects$">
+
+                <!-- <td><a routerLink="/projects/{{project._id}}" routerLinkActive="active">{{project.project_name}}</a></td> -->
+                <td>{{project.project_name}}</td>
+                <td>{{project.status}}</td>
+                <td>{{project.project_customer}}</td>
+                <td>{{project.description}}</td>
+                
+                <!-- <td>{{project.private}}</td> -->
+                <td>
+                  <div class="row">
+                    <a> {{ convertDated(project.time_start) }} </a>
+                  </div>
+                  <div class="row">
+                    <a> {{ convertDated(project.time_due) }} </a>
+                  </div>
+                  <!-- {{convertDated(project.time_start)}} -->
+                </td>
+                <!-- <td>{{convertDated(project.time_due)}}</td> -->
+                <!-- <td>{{project.creater_id}}</td> -->
+                <!-- <td>{{project.assigned}}</td> -->
+                <!-- <td>{{project.sub_tasks}}</td> -->
+                <!-- <td>{{project.costs}}</td> -->
+                <!-- <td>{{project.createdAt}}</td> -->
+                <!-- <td><button class="btn btn-block btn-outline-danger"
+                    (click)="remove_project(project._id,project.project_name)">Remove</button></td> -->
+                    <td><button class="btn btn-outline-dark" routerLink="/projects/{{project._id}}" routerLinkActive="active" >Edit</button></td>
+              </tr>
+
+            </tbody>
+            <tbody *ngIf="projects$?.length == 0">
+              <tr>
+                <td colspan="11" class="no-data-available">No data!</td>
+              </tr>
+            <tbody>
+
+          </table>
+
+
+
+
+            <table class="table table-responsive table-striped table-hover"
+              *ngIf="projects$ && false">
+              <thead>
+                <tr>
+                  <th><a class="text-nowrap">project_name</a></th>
+                  <th><a class="text-nowrap">project_customer</a></th>
+                  <th><a class="text-nowrap width-tb">description</a></th>
+                  <th><a class="text-nowrap">status</a></th>
+                  <!-- <th><a class="text-nowrap">private</a></th> -->
+                  <th><a class="text-nowrap">time_start</a></th>
+                  <th><a class="text-nowrap">time_due</a></th>
+                  <!-- <th><a class="text-nowrap">creater_id</a></th> -->
+                  <!-- <th><a class="text-nowrap">assigned</a></th> -->
+                  <!-- <th><a class="text-nowrap">sub_tasks</a></th> -->
+                  <!-- <th><a class="text-nowrap">costs</a></th> -->
+                  <!-- <th><a class="text-nowrap">createdAt</a></th> -->
+                  <th><a class="text-nowrap">Remove project</a></th>
+                </tr>
+              </thead>
+              <tbody *ngIf="projects$?.length != 0">
+                <tr *ngFor="let project of projects$">
+
+                  <td><a routerLink="/projects/{{project._id}}"
+                      routerLinkActive="active">{{project.project_name}}</a></td>
+                  <td>{{project.project_customer}}</td>
+                  <td>{{project.description}}</td>
+                  <td>{{project.status}}</td>
+                  <!-- <td>{{project.private}}</td> -->
+                  <td>{{convertDated(project.time_start)}}</td>
+                  <td>{{convertDated(project.time_due)}}</td>
+                  <!-- <td>{{project.creater_id}}</td> -->
+                  <!-- <td>{{project.assigned}}</td> -->
+                  <!-- <td>{{project.sub_tasks}}</td> -->
+                  <!-- <td>{{project.costs}}</td> -->
+                  <!-- <td>{{project.createdAt}}</td> -->
+                  <td><button class="btn btn-block btn-outline-danger"
+                      (click)="remove_project(project._id,project.project_name)">Remove</button></td>
+                </tr>
+
+              </tbody>
+              <tbody *ngIf="projects$?.length == 0">
+                <tr>
+                  <td colspan="11" class="no-data-available">No data!</td>
+                </tr>
+              <tbody>
+
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+

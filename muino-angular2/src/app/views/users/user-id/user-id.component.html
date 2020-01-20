@@ -1,0 +1,316 @@
+<div class="animated fadeIn"></div>
+<div class="card ">
+    <div class="card-header"> Change user
+        <div class="small text-muted">(relogin is needed)</div>
+    </div>
+    <div class="card-body">
+
+        <!-- select roles -->
+        <!-- <div class="row" *ngIf="false">
+            <div class="col-sm-4  col-xl-4">
+                <mat-form-field>
+                    <mat-label>Select Role</mat-label>
+                    <mat-select id="rolesSelect1" name="rolesSelect1" [(ngModel)]="rolesSelect1">
+                        <mat-option *ngFor="let RoleTypes of RoleTypes$" [value]="RoleTypes"> {{RoleTypes}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div> -->
+
+
+        <!-- <p *ngIf="false">
+            <mat-checkbox [(ngModel)]="removecheckbox1">Remove premission</mat-checkbox>
+        </p> -->
+
+
+
+        <!-- set role -->
+        <!-- <div class="row" *ngIf="false">
+            <div class="col-sm-4  col-xl-4">
+                <button [disabled]="loading" (click)="setRole()" class="btn btn-outline-dark"> Set role</button>
+                <img *ngIf="loading" class="pl-3"
+                    src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+            </div>
+        </div> -->
+
+
+        <!-- <input id="fileInput" type='file' (change)="onSelectFile($event)"> -->
+        <label class="hoverable" for="fileInput">
+            <img class="img-circle" [src]="'assets/img/avatars/'+user.avatar_path" />
+            <div class="hover-text" unselectable="on"> Upload file </div>
+            <div class="background"></div>
+        </label>
+        <input id="fileInput" type='file' (change)="onSelectFile_bier($event)">
+
+
+        <form [formGroup]="userPorfielForm" (ngSubmit)="submitUserProfiel()">
+
+
+
+            <h3>Account </h3>
+            <hr />
+
+            <!-- firstNam -->
+            <div class="row">
+                <mat-form-field class="col-12 col-md-3">
+                    <mat-label>Fullname </mat-label>
+                    <input matInput type="text" formControlName="fullname" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.fullname.errors }" required />
+                    <div *ngIf="submitted && f.fullname.errors" class="invalid-feedback">
+                        <div *ngIf="f.fullname.errors.required">Fullname is required</div>
+                    </div>
+                </mat-form-field>
+
+                <!-- firstNam -->
+                <!-- 
+            <div class="row">
+                <mat-form-field class="col-12 col-md-3">
+                    <mat-label>Firstname </mat-label>
+                    <input matInput type="text" formControlName="firstname" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.firstname.errors }" />
+                    <div *ngIf="submitted && f.firstname.errors" class="invalid-feedback">
+                        <div *ngIf="f.firstname.errors.required">Firstname is required</div>
+                    </div>
+                </mat-form-field> -->
+
+
+                <!-- lastName -->
+
+                <!-- <mat-form-field class="col-12 col-md-3">
+                    <mat-label>Surname </mat-label>
+                    <input matInput type="text" formControlName="lastname" placeholder="lastname" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.lastname.errors }" />
+                    <div *ngIf="submitted && f.lastname.errors" class="invalid-feedback">
+                        <div *ngIf="f.lastname.errors.required">Lastname is required</div>
+                    </div>
+                </mat-form-field> -->
+
+
+
+                <!-- username -->
+
+                <mat-form-field class="col-12 col-md-3" autocomplete="off">
+                    <!-- <label class="col-form-label" for="username">username</label> -->
+                    <mat-label>Username </mat-label>
+                    <input matInput type="text" formControlName="username" placeholder="username" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.username.errors }" autocomplete="off" required />
+                    <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                        <div *ngIf="f.username.errors.required">username is required</div>
+                    </div>
+                </mat-form-field>
+
+
+
+
+                <mat-form-field class="col-12 col-md-3">
+                    <!-- <label class="col-form-label" for="phone">phone</label> -->
+                    <mat-label>phone </mat-label>
+                    <input matInput type="text" formControlName="phonenumber" placeholder="phonenumber"
+                        class="form-control" [ngClass]="{ 'is-invalid': submitted && f.phonenumber.errors }" />
+                    <div *ngIf="submitted && f.phonenumber.errors" class="invalid-feedback">
+                        <div *ngIf="f.phonenumber.errors.required">phonenumber is required</div>
+                    </div>
+                </mat-form-field>
+            </div>
+
+
+
+            <div class="row">
+                <!-- avatar_path -->
+
+                <mat-form-field class="col-12 col-md-3">
+                    <!-- <label class="col-form-label" for="avatar_path">avatar_path</label> -->
+                    <mat-label>Profile picture </mat-label>
+                    <input matInput type="text" formControlName="avatar_path" placeholder="avatar_path"
+                        class="form-control" [ngClass]="{ 'is-invalid': submitted && f.avatar_path.errors }" />
+                    <div *ngIf="submitted && f.avatar_path.errors" class="invalid-feedback">
+                        <div *ngIf="f.avatar_path.errors.required">avatar_path is required</div>
+                    </div>
+                </mat-form-field>
+
+
+                <!-- company_Path that is used to have instead of muino company logo-->
+
+                <mat-form-field class="col-12 col-md-3">
+                    <!-- <label class="col-form-label" for="company_Path">company_Path</label> -->
+                    <mat-label>Company image path </mat-label>
+                    <input matInput type="text" formControlName="company_Path" placeholder="company_Path"
+                        class="form-control" [ngClass]="{ 'is-invalid': submitted && f.company_Path.errors }" />
+                    <div *ngIf="submitted && f.company_Path.errors" class="invalid-feedback">
+                        <div *ngIf="f.company_Path.errors.required">company_Path is required</div>
+                    </div>
+                </mat-form-field>
+
+
+                <!-- company -->
+
+                <mat-form-field class="col-12 col-md-3">
+                    <!-- <label class="col-form-label" for="company">company</label> -->
+                    <mat-label>Company </mat-label>
+                    <input matInput type="text" formControlName="company" placeholder="company" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.company.errors }" />
+                    <div *ngIf="submitted && f.company.errors" class="invalid-feedback">
+                        <div *ngIf="f.company.errors.required">company is required</div>
+                    </div>
+                </mat-form-field>
+
+
+                <!-- location -->
+
+                <mat-form-field class="col-12 col-md-3">
+                    <!-- <label class="col-form-label" for="location">Location - like Bali, Indonesia</label> -->
+                    <mat-label>Location - like Bali, Indonesia</mat-label>
+                    <input matInput type="text" formControlName="location" placeholder="location" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.location.errors }" />
+                    <div *ngIf="submitted && f.location.errors" class="invalid-feedback">
+                        <div *ngIf="f.location.errors.required">Location is required</div>
+                    </div>
+                </mat-form-field>
+            </div>
+            <hr />
+            <h3>Time management</h3>
+            <div class="row">
+                <!-- Hour rate -->
+                <mat-form-field class="col-12 col-md-3">
+                    <mat-label>Hour rate </mat-label>
+                    <input matInput type="number" formControlName="hourrate" placeholder="hourrate" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.hourrate.errors }" />
+                    <div *ngIf="submitted && f.hourrate.errors" class="invalid-feedback">
+                        <div *ngIf="f.hourrate.errors.required">hourrate is required</div>
+                    </div>
+                </mat-form-field>
+            </div>
+
+            <hr />
+            <h3>Account status</h3>
+
+            <div class="row">
+                <!-- Account status -->
+                <mat-form-field class="col-12 col-md-3">
+                    <mat-label>Account status </mat-label>
+                    <mat-select id="statusSelect" name="statusSelect" [(ngModel)]="statusSelect"
+                        [ngModelOptions]="{standalone: true}">
+                        <mat-option *ngFor="let accountStatus of accountStatus$" [value]="accountStatus.name">
+                            {{accountStatus.name}} <small> - {{  accountStatus.description}}</small>
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div class="row">
+                <mat-form-field class="col-12 col-md-3">
+                    <mat-label>Select roles</mat-label>
+                    <mat-select [(ngModel)]="rolesSelect" multiple [ngModelOptions]="{standalone: true}">
+                        <mat-option *ngFor="let RoleTypes of RoleTypes$" [value]="RoleTypes">{{RoleTypes}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+            </div>
+
+
+            <hr />
+            <h3>Communication</h3>
+
+
+            <!-- <hr /> -->
+            <!-- bot_id -->
+            <div class="row">
+                <mat-form-field class="col-12 col-md-3">
+                    <!-- <label class="col-form-label" for="bot_id">bot_id</label> -->
+                    <mat-label>Telegram bot ID </mat-label>
+                    <input matInput type="text" formControlName="bot_id" placeholder="bot_id" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.bot_id.errors }" />
+                    <div *ngIf="submitted && f.bot_id.errors" class="invalid-feedback">
+                        <div *ngIf="f.bot_id.errors.required">bot_id is required</div>
+                    </div>
+                </mat-form-field>
+
+
+
+                <!-- api_token -->
+
+                <mat-form-field class="col-5">
+                    <!-- <label class="col-form-label" for="api_token">api_token</label> -->
+                    <mat-label>Telegram API token </mat-label>
+                    <input matInput type="text" formControlName="api_token" placeholder="api_token" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.api_token.errors }" />
+                    <div *ngIf="submitted && f.api_token.errors" class="invalid-feedback">
+                        <div *ngIf="f.api_token.errors.required">api_token is required</div>
+                    </div>
+                </mat-form-field>
+
+
+
+                <!-- chat_id -->
+
+                <mat-form-field class="col-12 col-md-3">
+                    <!-- <label class="col-form-label" for="chat_id">chat_id</label> -->
+                    <mat-label>Telegram chat ID </mat-label>
+                    <input matInput type="text" formControlName="chat_id" placeholder="chat_id" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.chat_id.errors }" />
+                    <div *ngIf="submitted && f.chat_id.errors" class="invalid-feedback">
+                        <div *ngIf="f.chat_id.errors.required">chat_id is required</div>
+                    </div>
+                </mat-form-field>
+            </div>
+
+
+            <!-- <hr /> -->
+            <!-- email -->
+            <div class="row">
+                <mat-form-field class="col-4">
+                    <!-- <label class="col-form-label" for="email">email</label> -->
+                    <mat-label>Email </mat-label>
+                    <input matInput type="text" formControlName="email" placeholder="email" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f.email.errors }" required />
+                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                        <div *ngIf="f.email.errors.required">email is required</div>
+                    </div>
+                </mat-form-field>
+            </div>
+
+            <hr />
+            <h3>Password</h3>
+
+            <!-- password -->
+            <div class="row">
+                <mat-form-field class="col-4" autocomplete="off">
+                    <!-- <label class="col-form-label" for="password">password</label> -->
+                    <mat-label>Password </mat-label>
+                    <input matInput type="password" formControlName="password" placeholder="password"
+                        class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+                        autocomplete="off" />
+                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                        <div *ngIf="f.password.errors.required">password is required</div>
+                    </div>
+                </mat-form-field>
+            </div>
+
+            <!--confirm -->
+            <div class="row">
+                <mat-form-field class="col-4" autocomplete="off">
+                    <!-- <label class="col-form-label" for="repeatPassword">repeatPassword</label> -->
+                    <mat-label>Repeat password </mat-label>
+                    <input matInput type="password" formControlName="repeatPassword" placeholder="repeatPassword"
+                        class="form-control" [ngClass]="{ 'is-invalid': submitted && f.repeatPassword.errors }"
+                        autocomplete="off" />
+                    <div *ngIf="submitted && f.repeatPassword.errors" class="invalid-feedback">
+                        <div *ngIf="f.repeatPassword.errors.required">repeat password is required</div>
+                    </div>
+                </mat-form-field>
+            </div>
+
+            <div class="col-12 ">
+                <button class="btn btn-outline-dark" [disabled]="loading">Update</button>
+                <button class="btn btn-outline-danger float-right" (click)="remove_user(); $event.preventDefault()">Remove</button>
+                <img *ngIf="loading" class="pl-3"
+                    src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+                <div *ngIf="dataerror" [ngStyle]="{'color': 'red', 'font-weight': 'bold'}">{{dataerror}}</div>
+
+            </div>
+
+
+        </form>
+    </div>
+</div>

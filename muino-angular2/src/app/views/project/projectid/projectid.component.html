@@ -1,0 +1,112 @@
+
+
+<div class="animated fadeIn" *ngIf="projects$">
+  <div class="card">
+    <div class="card-header"> Project details</div>
+    <div class="card-body">
+
+
+      <div class="row" *ngIf="projects$.project_name">
+          <div class="col" >
+        <h1> {{projects$.project_name}}</h1>
+        
+        <!-- <p>{{projects$.private}}</p> -->
+        <!-- <p>{{projects$.creater_id}}</p> -->
+        <!-- <p>{{projects$.createdAt}}</p> -->
+        <!-- <p> Assigned to the project: {{projects$.assigned}}</p> -->
+        <p> <strong>Customer</strong>: {{projects$.project_customer}}</p>
+        <p> <strong>Budget</strong>: € {{projects$.budget}}</p>
+        <p> <strong>Status</strong>: {{projects$.status}}</p>
+        <p><strong>Start date</strong> : {{fulldate(projects$.time_start)}}</p>
+        <p> <strong>Due date</strong>: {{fulldate(projects$.time_due)}}</p>
+        <p> <strong>Description</strong>: {{projects$.description}}</p>
+
+        <!-- style="float: right;" -->
+        <input type="button" class="btn btn-outline-dark" [routerLink]="['/projects/', projects$._id, 'edit']" routerLinkActive="active"   value="Edit project" />
+        
+
+      </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="animated fadeIn ">
+  <div class="col-12-md col-7-lg">
+  <div class="card">
+    <div class="card-header"> Overview of the tasks</div>
+    <div class="card-body">    
+        <div class="row">    
+          <div class="col-auto" *ngIf="projects$">  
+              <!-- <h1> {{projects$.project_name}}</h1> -->
+              <!-- <p> Description: {{projects$.description}}</p> -->
+              <!-- <p>{{projects$.private}}</p> -->
+              <!-- <p>{{projects$.creater_id}}</p> -->
+              <!-- <p>{{projects$.createdAt}}</p> -->
+              <!-- <p> Assigned to the project: {{projects$.assigned}}</p> -->
+              <!-- <p> Customer: {{projects$.project_customer}}</p> -->
+              <!-- <p> Budget: € {{projects$.budget}}</p> -->
+              <!-- <p> Status: {{projects$.status}}</p> -->
+              <!-- <p> Start date: {{projects$.time_start}}</p> -->
+              <!-- <p> Due date: {{projects$.time_due}}</p> -->
+              <!-- <input type="button" class="btn btn-outline-success" [routerLink]="['/projects/', projects$._id, 'edit']" routerLinkActive="active"  style="float: right;" value="Edit project" /> -->
+              <input type="button" class="btn btn-outline-success" [routerLink]="['/projects/task',projects$._id, 'new']" routerLinkActive="active"  style="float: right;" value="Add task" />
+              <!-- <br/>   <br/>   -->
+              <!-- <hr />    -->
+            
+              <table  class="table table-responsive table-striped table-hover">
+              <thead>
+                <tr>
+                    <th><a class="text-nowrap">task_name</a></th>
+                    <th><a class="text-nowrap">status</a></th>
+                    <th><a class="text-nowrap">description</a></th>
+                    <!-- <th><a class="text-nowrap">parrent</a></th> -->
+                    <th><a class="text-nowrap">time_start</a></th>
+                    <th><a class="text-nowrap">time_stop</a></th>
+                    <!-- <th><a class="text-nowrap">creater_id</a></th> -->
+                    <!-- <th><a class="text-nowrap">assigned</a></th> -->
+                    <!-- <th><a class="text-nowrap">clock_out_events</a></th> -->
+                    <!-- <th><a class="text-nowrap">sub_tasks</a></th> -->
+                    <!-- <th><a class="text-nowrap">createdAt</a></th> -->
+                    <th><a class="text-nowrap">Edit task</a></th>
+                    <!-- <th><a class="text-nowrap">Remove task</a></th> -->
+                </tr>                
+              </thead>
+              <tbody *ngIf="tasks$?.length != 0">
+              <tr *ngFor="let task of tasks$ | keyvalue ;let index = index" (change)="update_table_settings()" >      
+                <td>{{tasks$[index].task_name}}</td>
+                <td>{{tasks$[index].status}}</td>
+                <td>{{tasks$[index].description}}</td>
+                <!-- <td>{{tasks$[index].parrent}}</td> -->
+                <td>{{convertDated(tasks$[index].time_start)}}</td>
+                <td>{{convertDated(tasks$[index].time_stop)}}</td>
+                <!-- <td>{{tasks$[index].creater_id}}</td> -->
+                <!-- <td>{{tasks$[index].assigned}}</td> -->
+                <!-- <td>{{tasks$[index].clock_out_events}}</td> -->
+                <!-- <td>{{tasks$[index].sub_tasks}}</td> -->
+                <!-- <td>{{tasks$[index].createdAt}}</td> -->
+                <!-- (click)="edit_task(task._id,task.title)" -->        
+                <td><button class="btn btn-outline-dark" [routerLink]="['/projects/task', tasks$[index]._id, 'edit']" routerLinkActive="active" >Edit</button></td>
+                <!-- <td><button class="btn btn-block btn-outline-danger" (click)="remove_task(tasks$[index]._id,tasks$[index].task_name)">Remove</button></td> -->
+              </tr>
+            </tbody>
+            <tbody *ngIf="tasks$?.length == 0">
+              <tr>
+                <td colspan="7" class="no-data-available">No data!</td>
+              </tr>
+            <tbody>
+
+
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

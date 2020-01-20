@@ -1,0 +1,71 @@
+<div class="animated fadeIn">
+  <div class="row">
+
+
+
+    <!-- ********************************************************************************************************************************** -->
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header"> User list </div>
+        <div class="card-body">
+          <mat-form-field class="input-form">
+            <input matInput placeholder="Search user.." [(ngModel)]="UserSearchRequest" disabled>
+          </mat-form-field>
+          <table class="table">
+            <thead>
+              <tr>
+                <th><a class="small text-muted"> Name </a></th>
+                <th><a class="small text-muted"> Created on </a></th>
+                <th><a class="small text-muted"> Roles </a></th>
+                <th><a class="small text-muted"> Edit</a></th>
+              </tr>
+            </thead>
+
+            <tbody *ngIf="users$?.length != 0">
+              <tr class="small text-muted" *ngFor="let user of users$">
+                <td>
+
+                  <!-- avatar s16 d-xs-flex d-md-none mr-1 prepend-top-2 lazy -->
+                  <div class="row">
+                    <div class="col-3 width_image_col">
+                      <img class="img-avatar image-width"  [src]="'assets/img/avatars/'+ (user.avatar_path && user.avatar_path.length > 4 ?user.avatar_path : 'chicken.jpg'  )" >
+                    </div>
+                    <div class="col">
+                      <div class="row">
+                        {{ user.fullname}}
+                        <span *ngIf="user.isAdmin" class="badge badge-secondary spacer_span"> Admin</span>
+                        <span *ngIf="user.acitvity_status==='active'"
+                          class="badge badge-success spacer_span">active</span>
+                        <span *ngIf="user.acitvity_status==='block'" class="badge badge-danger spacer_span">block</span>
+                        <span *ngIf="user.acitvity_status==='onhold'"
+                          class="badge badge-warning spacer_span">onhold</span>
+                      </div>
+                      <div class="row">
+                        <a> {{ user.email }} </a>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+
+                <td>{{ clean_date(user.createdAt) }}</td>
+                <td>{{ user.roles_str }}</td>
+                <td><input type="button" class="btn btn-outline-dark" [routerLink]="['/users/', user._id, 'edit']"
+                    routerLinkActive="active" value="Edit" />
+              </tr>
+            </tbody>
+            <tbody *ngIf="users$?.length == 0">
+              <tr>
+                <td colspan="3" class="no-data-available">No data!</td>
+              </tr>
+            <tbody>
+
+
+
+          </table>
+        </div>
+      </div>
+    </div>
+    <!-- ********************************************************************************************************************************** -->
+
+  </div>
+</div>

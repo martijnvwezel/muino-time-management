@@ -1,0 +1,156 @@
+<div class="col-12-md col-7-lg">
+  <div class="card">
+    <div class="card-header">Edit Project </div>
+    <div *ngIf="project" class="card-body">
+
+
+      <div class="row">
+        <div class="col-6">
+          <mat-form-field class="input-form">
+            <input matInput placeholder="Project name" [(ngModel)]="project.project_name">
+          </mat-form-field>
+
+
+        </div>
+        <div class="col-6">
+          <mat-form-field class="input-date-form">
+            <input matInput type="date" placeholder="Start date" [(ngModel)]="project.time_start">
+          </mat-form-field>
+
+          <mat-form-field class="input-date-form">
+            <input matInput type="date" placeholder="Due date" [(ngModel)]="project.time_due">
+          </mat-form-field>
+        </div>
+
+      </div>
+
+      <div class="row col">
+
+        <mat-form-field class="input-form">
+          <input matInput placeholder="Project customer" [(ngModel)]="project.project_customer">
+        </mat-form-field>
+      </div>
+
+
+      <div class="row col">
+
+          <mat-form-field class="input-form">
+            <input matInput type="number" placeholder="Project budget (€ ****,**)" [(ngModel)]="project.budget">
+          </mat-form-field>
+        </div>
+
+  
+
+
+      <br />
+
+      <div class="row col">
+        <label for="description"><span>Project description</span></label>
+        <textarea class="form-control" placeholder="Max length 250..." rows="3" maxlength="250"
+          [(ngModel)]="project.description"></textarea>
+      </div>
+
+      <br /> <br />
+      <!-- 
+      <div class="form-group">
+        <label class="label-bold" for="project_visibility_level">Visibility Level <strong>[Kapot...]</strong>
+          <a aria-label="Documentation for Visibility Level" target="_blank" rel="noopener noreferrer"><span
+              class="fa fa-question-circle"></span>
+          </a>
+        </label>
+
+        <div class="form-check">
+          <input class="form-check-input" type="radio" [value]="1" checked="checked" name="project_visibility_level_0"
+            for="project_visibility_level_0">
+          <label class="form-check-label"><span class="fa fa-lock fa-fw"></span>Private
+            <div class=" text-muted">Project access must be granted explicitly to each user.</div>
+          </label>
+        </div>
+
+
+        <div class="form-check">
+          <input class="form-check-input" type="radio" [value]="0" name="project_visibility_level_0"
+            for="project_visibility_level_10">
+          <label class="form-check-label"><span class="fa fa-shield fa-fw"></span>Internal
+            <div class=" text-muted">The project can be accessed by any logged in user.</div>
+          </label>
+        </div>
+
+      </div> -->
+      <!-- <br /> -->
+
+
+      <!-- <div class="row">
+        <label class="col-sm-4  col-xl-4 col-form-label" for="multiple-select">Enable private mode </label>
+        <div class="col-3">
+          <label class="switch switch-label switch-danger">
+            <input type="checkbox" [(ngModel)]="project.private" class="switch-input" unchecked
+              [ngModelOptions]="{standalone: true}">
+            <span class="switch-slider" data-checked="On" data-unchecked="Off"></span>
+          </label>
+        </div>
+      </div> -->
+
+      <!-- <div class="row">
+        <label class="col-sm-4  col-xl-4 col-form-label" for="multiple-select">Status</label>
+        <div class="col-sm-4  col-xl-4">
+          <select id="statusSelect1" name="statusSelect1" [(ngModel)]="project.status"
+            [ngModelOptions]="{standalone: true}">
+            <option *ngFor="let StatusType of StatusType$" [value]="StatusType"> {{StatusType}} </option>
+          </select>
+        </div>
+      </div> -->
+
+
+      <!-- <div class="row">
+        <label class="col-sm-4  col-xl-4 col-form-label" for="multiple-select">Assigned</label>
+        <div class="col-sm-4  col-xl-4">
+          <select id="assignedSelect1" name="assignedSelect1" [(ngModel)]="project.creater_id"
+            [ngModelOptions]="{standalone: true}">
+            <option *ngFor="let assigned of assigned$" [value]="assigned.assigned_id"> {{assigned.name}} </option>
+          </select>
+        </div>
+      </div> -->
+
+
+
+                    
+        <div class="row">
+          <!-- Account status -->
+          <mat-form-field class="col-12 col-md-3">
+              <mat-label>Account status </mat-label>  
+              <mat-select id="statusSelect1" name="statusSelect1" [(ngModel)]="statusSelect1" [ngModelOptions]="{standalone: true}">
+                  <mat-option *ngFor="let accountStatus of StatusType$" [value]="accountStatus.name">
+                      {{accountStatus.name}} <small> - {{  accountStatus.description}}</small>
+                  </mat-option>
+              </mat-select>
+          </mat-form-field> 
+      </div>
+
+      <div class="row">
+         <!-- Select/assign users -->
+        <mat-form-field  class="col-12 col-md-3">
+            <mat-label>Assigned users</mat-label>
+            <mat-select [(ngModel)]="assignedSelect1"  multiple [ngModelOptions]="{standalone: true}">
+              <mat-option  *ngFor="let assigned of assigned$" [value]="assigned._id">{{assigned.username}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+
+      <div class="form-group">
+        <div *ngIf="error_submit" [ngStyle]="{'color': 'red', 'font-weight': 'bold'}">
+          <div *ngIf="error_submit">{{error_string}} </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <button [disabled]="loading" class="btn btn-primary" (click)="update_project()" >save</button>
+        <img *ngIf="loading" class="pl-3"
+          src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+        <a [routerLink]="['/projects',project._id]" routerLinkActive="active" class="btn btn-link">Cancel</a>
+      </div>
+
+    </div>
+  </div>
+</div>

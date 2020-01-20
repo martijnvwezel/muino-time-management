@@ -1,0 +1,204 @@
+<div class="animated fadeIn ">
+  <div class="card">
+    <div class="card-header"> Time accounting </div>
+    <div class="card-body">
+
+      <!-- <div class="row">
+      <label class="col-md-3 col-form-label" for="multiple-select">Year </label>
+      <div class="col-md-3">
+        <select id="yearSelect1" name="yearSelect1" [(ngModel)]="yearSelect1" (change)="update()">
+          <option *ngFor="let year of choose_year" [value]="year"> {{year}} </option>
+        </select>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <label class="col-md-3 col-form-label" for="multiple-select">Week </label>
+      <div class="col-md-3">
+        <select id="weekSelect1" name="weekSelect1" [(ngModel)]="weekSelect1" (change)="update()">
+          <option *ngFor="let week of choose_week" [value]="week"> {{week}} </option>
+        </select>
+      </div>
+    </div> -->
+
+
+
+
+      <!-- 
+    <div class="row">
+      <label class="col-md-3 col-form-label" for="multiple-select">Username </label>
+      <div class="col-md-3">
+        <select id="userSelect1" name="userSelect1" [(ngModel)]="userSelect1" (change)="update()">
+          <option *ngFor="let user of choose_user" [value]="user"> {{user.user}} </option>
+        </select>
+      </div>
+    </div> -->
+
+      <div class="row">
+        <div class="col">
+          <!-- <div class="col-sm-1"> -->
+          <button class="btn  btn-outline-secondary width-pre" (click)="set_week(-1)">
+            < </button> <!-- </div> -->
+
+              <!-- <div class="col-sm-3"> -->
+              <mat-form-field class="width-weekchoice" (change)="set_week(0)">
+                <input matInput type="week" [(ngModel)]="weekSelectText">
+
+              </mat-form-field>
+              <!-- </div> -->
+              <!-- <mat-form-field>
+              <input matInput [matDatepicker]="picker" placeholder="Choose a date"  (click)="test123()" >
+              <mat-datepicker-toggle matSuffix [for]="picker"  ></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+             -->
+
+              <button class="btn btn-outline-secondary width-next" (click)="set_week(1)"> > </button>
+
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col">
+          <table class="table table-responsive table-striped table-hover table-sm">
+            <thead>
+              <tr>
+                <th>
+                  <p class="width=100px;"> PROJECT </p>
+                </th>
+                <th>
+                  <p class="width=100px;"> TASK </p>
+                </th>
+                <th> </th>
+
+                <th>
+                  <p class="width-tb"> <small> MO {{week.mo.getDate()}} </small> </p>
+                </th>
+                <th>
+                  <p class="width-tb"> <small> TU {{week.tu.getDate()}} </small> </p>
+                </th>
+                <th>
+                  <p class="width-tb"> <small> WE {{week.we.getDate()}} </small> </p>
+                </th>
+                <th>
+                  <p class="width-tb"> <small> TH {{week.th.getDate()}} </small> </p>
+                </th>
+                <th>
+                  <p class="width-tb"> <small> FR {{week.fr.getDate()}} </small> </p>
+                </th>
+                <th>
+                  <p class="width-tb"> <small> SA {{week.sa.getDate()}} </small> </p>
+                </th>
+                <th>
+                  <p class="width-tb"> <small> SU {{week.su.getDate()}} </small> </p>
+                </th>
+                <th>
+                  <p class="width=20;"> <small> TOTAL </small> </p>
+                </th>
+                <th>
+                  <p class="width=80;"> <small> COMMENT </small> </p>
+                </th>
+                <th> </th>
+
+              </tr>
+            </thead>
+
+            <!-- key=index -->
+
+            <!-- <tr *ngFor="let week_project of data | keyvalue ;let index = index" (change)="update_table_settings()">{{}}</tr> -->
+            <tr *ngFor="let week_project of data | keyvalue ;let index = index" (change)="update_table_settings()">
+
+              <td>
+                <mat-form-field>
+                  <mat-label>Pick Project </mat-label>
+                  <mat-select [(value)]="data[week_project.key].project_name" (selectionChange)="changeTask()">
+                    <mat-option *ngFor="let optionProject of data[week_project.key].project_list"
+                      [value]="optionProject">
+                      {{optionProject}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </td>
+
+              <td>
+                <mat-form-field>
+                  <mat-label>Pick Task</mat-label>
+                  <mat-select [(value)]="data[week_project.key].task_name" (selectionChange)="changeTaskID()">
+                    <mat-option *ngFor="let optionTask of data[week_project.key].task_list " [value]="optionTask">
+                      {{optionTask}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </td>
+
+              <!-- Empty colomn after project and task-->
+              <td></td>
+
+              <td>
+                <mat-form-field class="width-tb"><input matInput type="number" [(ngModel)]="data[week_project.key].mo">
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-form-field class="width-tb"><input matInput type="number" [(ngModel)]="data[week_project.key].tu">
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-form-field class="width-tb"><input matInput type="number" [(ngModel)]="data[week_project.key].we">
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-form-field class="width-tb"><input matInput type="number" [(ngModel)]="data[week_project.key].th">
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-form-field class="width-tb"><input matInput type="number" [(ngModel)]="data[week_project.key].fr">
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-form-field class="width-tb"><input matInput type="number" [(ngModel)]="data[week_project.key].sa">
+                </mat-form-field>
+              </td>
+              <td>
+                <mat-form-field class="width-tb"><input matInput type="number" [(ngModel)]="data[week_project.key].su">
+                </mat-form-field>
+              </td>
+
+              <td class="text-middle-allign">{{ round(data[week_project.key].total, 1) }}</td>
+              <td>
+                <mat-form-field class="width-comment"><input matInput type="text"
+                    [(ngModel)]="data[week_project.key].comment">
+                </mat-form-field>
+              </td>
+
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td> <strong>Total </strong></td>
+              <td>{{ round(counter.mo, 1) }}</td>
+              <td>{{ round(counter.tu, 1) }}</td>
+              <td>{{ round(counter.we, 1) }}</td>
+              <td>{{ round(counter.th, 1) }}</td>
+              <td>{{ round(counter.fr, 1) }}</td>
+              <td>{{ round(counter.sa, 1) }}</td>
+              <td>{{ round(counter.su, 1) }}</td>
+              <td>{{ round(counter.total, 1) }}</td>
+              <td></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <button class="btn btn-outline-info button-margin" (click)="add_row()">Add project </button>
+        <button class="btn btn-outline-success button-margin" [disabled]="loading" (click)="save_week_data()">Save
+          button </button>
+        <img *ngIf="loading" style="width:16px;height:16px;"
+          src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+      </div>
+    </div>
+  </div>
+</div>

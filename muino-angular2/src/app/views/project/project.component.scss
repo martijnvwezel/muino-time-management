@@ -1,0 +1,38 @@
+.width-tb {
+    width: 80px;
+  }
+
+.width-card {
+    min-width: 400px;
+}
+
+.myInput {
+  height: 42px !important;
+  padding: 16px !important;
+}
+
+.width-tm {
+  padding: 0px;
+  // width: 40px;
+
+  margin:0px
+  
+}
+
+table, th , td {
+  // border: 1px solid grey;
+  border-collapse: collapse;
+  padding: 5px;
+}
+table tr:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+table tr:nth-child(even) {
+  background-color: #ffffff;
+}
+
+th {
+  text-align: inherit;
+  font-weight: bold;
+
+}

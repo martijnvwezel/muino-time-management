@@ -1,0 +1,86 @@
+// muino
+.dividerText {
+    height: 3px;
+    border-radius: 50px;
+    background: #cf1717;
+    width: 60px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    &.is-centered {
+        margin: 0 auto;
+    }
+}
+
+.divider{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background: #cf1717;
+}
+
+.containernew {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  
+
+
+.containernew .item {
+    width: 300px;
+    min-height: 500px;
+    text-align: center;
+    margin: 10px;
+    padding-top: 15px;
+    border: solid 2px;
+    border-color: $blue-grey;
+    border-radius: 15px;
+
+    float: left;
+    margin:10px;
+    
+}
+
+.texty {
+    text-align: left;
+    padding-left: 20px;
+}
+
+
+.item a button{
+    border:none;
+    position: absolute;
+    padding: 10px;
+    margin-bottom: 11px;;
+    margin-left: 25px;
+    margin-right: 25px;
+    color: white;
+    background-color: $blue-grey;
+    // text-align: center;
+    // cursor: pointer;
+    width: 300px;   
+    font-size: 18px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    // border-radius: 15px;
+    // float: none;
+    // display: table-cell;
+    vertical-align: bottom;
+    right: 0px;
+    left: 0px;
+    bottom: 0px;
+  }
+
+
+  button:hover, a:hover {
+    opacity: 0.7;
+  }
+
+  .widthFull{
+      width: 100%;
+}
+
+.activeOverview{
+    height: 66px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}

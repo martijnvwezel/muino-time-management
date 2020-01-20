@@ -1,0 +1,66 @@
+<div class="animated fadeIn ">
+  <div class="row">
+    <div class="col-sm">
+      <div class="card">
+        <div class="card-header">           
+           
+
+          <p class="greenbold" *ngIf="user.acitvity_status==='active'">
+            <i class="fa fa-user"></i> Userprofiel {{user.acitvity_status}}
+          </p>
+          <p class="orangebold" *ngIf="user.acitvity_status=='onhold'">
+            <i class="fa fa-user"></i> Userprofiel {{user.acitvity_status}}
+          </p>
+          <p class="redbold" *ngIf="user.acitvity_status==='block'">
+            <i class="fa fa-user"></i> Userprofiel {{user.acitvity_status}}
+          </p>
+        </div>
+
+        <div class="card-body">
+          <div class="col-md-6">
+            <label class="hoverable" for="fileInput">
+              <img class="img-circle" [src]="'assets/img/avatars/'+user.avatar_path" />
+              <!-- <img class="img-circle" [src]="user.avatar" /> -->
+              <div class="hover-text"  unselectable="on" >Upload file</div>
+              <div class="background"></div>
+            </label>
+            <input id="fileInput" type='file' (change)="onSelectFile($event)">
+            <!-- <button *ngIf="user.avatar_path" (click)="delete()" >delete</button> -->
+
+            <p *ngIf="user.fullname">
+              <i class="fa fa-user"></i> {{user.fullname}} ({{user.username}})
+            </p>
+            <p *ngIf="user.phonenumber">
+              <i class="fa fa-phone"></i> {{user.phonenumber}}
+            </p>
+            <p *ngIf="user.email">
+              <i class="fa fa-envelope"></i> {{user.email}}
+            </p>
+            <p *ngIf="user.company">
+              <i class="fa fa-briefcase"></i> {{user.company}}
+            </p>
+            <p *ngIf="user.location">
+              <i class="fa fa-location-arrow"></i> {{user.location}}
+            </p>
+            <p *ngIf="user.roles">
+              <i class="fa fa-key"></i> {{user.roles}}
+            </p>
+            <p *ngIf="user.isAdmin">
+              <i class="fa fa-user-secret"></i> Administrator
+            </p>
+          </div>
+
+        </div>
+        <div class="col-6 pull-right">
+
+        </div>
+
+
+
+      </div><!-- end card -->
+
+
+    </div>
+
+  </div>
+</div>

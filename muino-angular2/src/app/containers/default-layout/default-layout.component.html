@@ -1,0 +1,23 @@
+<!-- sidebar-fixed -->
+<div class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
+
+  <!-- top bar header -->
+  <app-header_  [user]="user"></app-header_>
+
+  <div class="app-body">
+    <!-- side-bar -->
+    <app-sidebar_ [user]="user"></app-sidebar_>
+
+    <!-- main application -->
+    <main class="main">
+      <!-- <app-breadcrumb_></app-breadcrumb_> -->
+
+      <div class="container-fluid p-3">
+        <router-outlet></router-outlet>
+      </div><!-- /.container-fluid -->
+
+    </main>
+    <!-- <app-rightsidebar_ [user]="user"></app-rightsidebar_> -->
+  </div>
+  <app-footer_></app-footer_>
+</div>

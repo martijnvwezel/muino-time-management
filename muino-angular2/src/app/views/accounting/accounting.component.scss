@@ -1,0 +1,85 @@
+
+.card-size-accounting {
+  width: 800px;
+
+}
+.width-tb {
+      width: 100px;
+      padding: 0px ;
+  }
+
+.width-budget {
+    width: 200px;
+    padding: 0px ;
+}
+
+.width-week{ // ! extra line space is because of <p>
+    width: 40px;
+    text-align: center;
+    padding: 0px;
+
+    // padding-left: 2px
+    // height: 25px;
+}
+
+
+.nopadding{
+  padding: 0px;
+}
+
+
+tbody td {
+  // border-bottom: solid 1px #DDEFEF;
+  // color: #333;
+  // padding: 10px;
+  // text-shadow: 1px 1px 1px #fff;
+  white-space: nowrap;
+  padding: 0px;
+}
+
+
+
+.table_heading{
+  background: rgb(211, 206, 206);
+}
+
+.scroller {
+    margin-left: 105px;
+ 
+}
+.sticky-col {
+  // https://jsfiddle.net/p4e3rv2b/
+    left: 0;
+    position: absolute;
+    overflow: auto;
+    padding-right: 1px;
+    padding-top: 0px;
+    padding-left: 0px;
+    padding-bottom: 0px;
+    width: 120px;
+    // border-right: solid 1px black;
+    // overflow-x: scroll;
+    // overflow-y: visible;
+    
+
+}
+
+/* width */
+::-webkit-scrollbar {
+  height: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
