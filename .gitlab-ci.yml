@@ -1,0 +1,31 @@
+image: docker:git
+services:
+   - docker:19.03.0-dind
+
+variables:
+  GIT_SUBMODULE_STRATEGY: recursive
+  DOCKER_TLS_CERTDIR: ""
+
+before_script:
+  - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD"
+  - git submodule sync --recursive
+  - git submodule update --init --recursive  --remote
+
+ 
+stages:
+  - build
+
+
+build_job1:
+  stage: build
+  script:
+    - docker pull $CI_REGISTRY/$CONTAINER_IMAGE:latest || true
+    - docker build --cache-from $CI_REGISTRY/$CONTAINER_IMAGE:latest --tag $CI_REGISTRY/$CONTAINER_IMAGE:$CI_COMMIT_SHA --tag $CI_REGISTRY/$CONTAINER_IMAGE:latest .
+    - docker push $CI_REGISTRY/$CONTAINER_IMAGE:$CI_COMMIT_SHA
+    - docker push $CI_REGISTRY/$CONTAINER_IMAGE:latest
+
+
+  only:
+    - master
+
+
