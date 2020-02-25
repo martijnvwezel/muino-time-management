@@ -9,8 +9,6 @@ const userCtrl = require('../controllers/user.controller');
 const User = require('../models/user.model');
 const config = require('./config');
 const warningCtrl = require('../controllers/warning.controller');
-const redis_client = require('./redis');
-
 
 const localLogin = new LocalStrategy({
   usernameField: 'email'
@@ -106,7 +104,6 @@ const localLogin = new LocalStrategy({
   status.extra = user.email+";"+ip;
   var ip ="....";// req.headers['x-forwarded-for'] || req.connection.remoteAddress;
   warningCtrl.saveWarning(status);
-  redis_client.set(user._id.toString(), JSON.stringify(user));
   done(null, user);
 });
 
@@ -115,15 +112,7 @@ const jwtLogin = new JwtStrategy({
   secretOrKey: config.jwtSecret
 }, async (payload, done) => {
   console.log(payload._id );
-  
-  var user  = await getRedis(payload._id);
-
-  // console.log('user FROM REDIS: ', user);
-
- 
-
-  if (!user) {
-    user = await User.findById(payload._id);
+  let user = await User.findById(payload._id);
     if (!user) {
       console.log("user not known");
       return done(null, false);
@@ -135,8 +124,6 @@ const jwtLogin = new JwtStrategy({
       delete user.nSalt;
     }
 
-    redis_client.set(payload._id.toString(), JSON.stringify(user));
-  }
 
   done(null, user);
 });
@@ -151,30 +138,6 @@ passport.serializeUser(function (user, done) {
 passport.deserializeUser(function (user, done) {
   done(null, user);
 });
-
-
-function getRedis(payload_id) {
-  return new Promise(user => {
-    redis_client.get(payload_id.toString(), function (error, result) {
-      if (error) {
-        console.log(error);
-        throw error;
-      }
-      try {
-
-        user(JSON.parse(result));
-
-      } catch (e) {
-        console.log("fix the result of redis");
-
-        user({});
-      }
-
-    });
-  });
-
-}
-
 
 
 module.exports = passport;

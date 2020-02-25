@@ -1,34 +1,38 @@
-<app-sidebar [fixed]="true" [display]="'lg'"  >
-        <!-- *ngIf="enableSideBar" -->
-    
-    <div class="sidebar-header" >
-        
-        <img alt="Avatar" class="img-avatar" [src]="'assets/img/avatars/'+ (user.avatar_path && user.avatar_path.length > 4 ?user.avatar_path : 'chicken.jpg'  )">
+<app-sidebar [fixed]="true" [display]="'lg'">
+    <!-- *ngIf="enableSideBar" -->
+
+    <div class="sidebar-header">
+
+        <img alt="Avatar" class="img-avatar"
+            [src]="'assets/img/avatars/'+ (user.avatar_path && user.avatar_path.length > 4 ?user.avatar_path : 'chicken.jpg'  )">
         <div><strong>{{user.fullname}}</strong></div>
         <div class="text-muted"><small>{{user.location}}</small></div>
 
         <div aria-label="Button group with nested dropdown" class="btn-group" role="group">
-            <!-- <button class="btn btn-link" type="button" routerLink="/settings" routerLinkActive="active">
+        <button class="btn btn-link" type="button" routerLink="/settings" routerLinkActive="active">
                 <i class="icon-settings"></i>
-            </button> -->
-            <!-- <button class="btn btn-link" type="button" routerLink="/warning" routerLinkActive="active">
+            </button>
+        <button class="btn btn-link" type="button" routerLink="/warning" routerLinkActive="active">
                 <i class="icon-speech"></i> <span class="badge badge-warning badge-pill">0</span>
             </button>
             <div class="btn-group" dropdown="" placement="bottom left" role="group" ng-reflect-placement="bottom left">
                 <button class="btn btn-link" dropdowntoggle="" type="button" aria-haspopup="true" routerLink="/profile"
                     routerLinkActive="active"><i class="icon-user"></i>
                 </button>
-            </div> -->
+            </div>
         </div>
     </div>
     <!--End top picture-->
     <perfect-scrollbar>
         <ul class="nav my-custom-scrollbar my-custom-scrollbar-primary">
             <ng-template ngFor let-navitem [ngForOf]="navItems">
-                <li *ngIf="!isHasChild(navitem)" [ngClass]="{'nav-title': isTitle(navitem), 'nav-item': !(isTitle(navitem) || isDivider(navitem)), 'nav-divider': isDivider(navitem)}" (click)="toggleMenu()">
+                <li *ngIf="!isHasChild(navitem)"
+                    [ngClass]="{'nav-title': isTitle(navitem), 'nav-item': !(isTitle(navitem) || isDivider(navitem)), 'nav-divider': isDivider(navitem)}"
+                    (click)="toggleMenu()">
                     <span *ngIf="isTitle(navitem)">{{navitem.name}}</span>
                     <span *ngIf="isDivider(navitem)"></span>
-                    <a class="nav-link" *ngIf="!(isTitle(navitem) || isDivider(navitem))" routerLink="{{navitem.url}}" routerLinkActive="active">
+                    <a class="nav-link" *ngIf="!(isTitle(navitem) || isDivider(navitem))" routerLink="{{navitem.url}}"
+                        routerLinkActive="active">
                         <i [ngClass]="navitem.icon"> </i> {{navitem.name}}
                     </a>
                 </li>
@@ -36,13 +40,14 @@
                     class="nav-item nav-dropdown open">
                     <a appNavDropdownToggle class="nav-link nav-dropdown-toggle" role="button">
                         <i class="nav-icon" [ngClass]="navitem.icon"></i> {{navitem.name}}</a>
-                        <ul class="nav-dropdown-items">
-                            <li class="nav-item" *ngFor="let cnavitem of navitem.children">
-                                <a class="nav-link" *ngIf="!(isTitle(cnavitem) || isDivider(cnavitem))" routerLink="{{cnavitem.url}}" routerLinkActive="active" (click)="toggleMenu()">
-                                    <i class="nav-icon" [ngClass]="cnavitem.icon"></i> {{cnavitem.name}}
-                                </a>
-                            </li>
-                        </ul>
+                    <ul class="nav-dropdown-items">
+                        <li class="nav-item" *ngFor="let cnavitem of navitem.children">
+                            <a class="nav-link" *ngIf="!(isTitle(cnavitem) || isDivider(cnavitem))"
+                                routerLink="{{cnavitem.url}}" routerLinkActive="active" (click)="toggleMenu()">
+                                <i class="nav-icon" [ngClass]="cnavitem.icon"></i> {{cnavitem.name}}
+                            </a>
+                        </li>
+                    </ul>
                 </li>
             </ng-template>
         </ul>

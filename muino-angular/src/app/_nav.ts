@@ -1,4 +1,4 @@
-export let navItems = [ ];
+export let navItems = [];
 
 /* app.componentent is a check if user_role exist for the item , when excist  this  navitem part is added*/
 export const time_navItems = [
@@ -14,11 +14,10 @@ export const time_navItems = [
     name: 'Time accounting',
     url: '/prikklok',
     icon: 'fa fa-lightbulb-o'
-
   }
 ];
 
-export const time_navItemsAdmin= [
+export const time_navItemsAdmin = [
   {
     name: 'Projects',
     url: '/projects',
@@ -35,6 +34,6 @@ export const time_navItemsroles = [
   {
     name: 'Reports',
     url: '/reports',
-    icon: 'fa fa-file-excel-o'  
+    icon: 'fa fa-file-excel-o'
   }
 ];

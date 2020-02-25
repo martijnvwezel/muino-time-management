@@ -63,8 +63,6 @@ export class AppComponent implements OnInit {
   private update_users() {
     // console.log("update sidebar");
     let tempSidebar = [];
-    // this is for adding stuff to the sidebar
-    
 
     tempSidebar.push.apply( tempSidebar,time_navItems);
 
@@ -78,7 +76,4 @@ export class AppComponent implements OnInit {
 
 
   }
-
-
-
 }

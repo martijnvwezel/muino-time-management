@@ -9,7 +9,7 @@ Some list of URLs
 * [telegram](https://t.me/Muinonl)
 
 # Start developing on Muino
-
+Note: Node.js should be >10.9, and you should have installed MongoDB.
 ## Installation
 ``` bash 
 cd muino-angular/
@@ -26,12 +26,27 @@ cp .env.example .env
 ```
 
 ## Developing
-Be aware that you need a MongDB, and Redis version running. Redis will be reconsidered, so it can be removed in the future branches.
+Note: Node.js should be >10.9, and you should have installed MongoDB.
+``` bash 
+# running in the same terminal (not recommended)
+sudo /usr/bin/mongod --unixSocketPrefix=/var/lib/mongodb --config /etc/mongod.conf & 
+
+# running in a different terminal 
+sudo /usr/bin/mongod --unixSocketPrefix=/var/lib/mongodb --config /etc/mongod.conf 
+# Note: can be mongodb.conf
+```
+
+
 ``` bash 
 cd muino-smarthome-api/
+
+
 npm run start # This command build the frontend and start the backend
 
 ```
+## ADMIN user
+Register with the following email adress to the account: `martijnvwezel@muino.nl` for admin rights. 
+
 
 ## Production
 ### Build a docker

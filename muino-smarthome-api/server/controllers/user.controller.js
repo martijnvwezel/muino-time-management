@@ -12,7 +12,6 @@ const User = require('../models/user.model');
 const Passwordrst = require('../models/passwordrst.model');
 const authCtrl = require('../controllers/auth.controller');
 const exist_role = require('../middleware/shared_functions')
-const redis_client = require('../config/redis');
 const telegram = require('../middleware/telegram');
 
 function objectId() {
@@ -254,7 +253,7 @@ async function removeUser(req, res) {
   let removedUSerError = "removed user: " + JSON.stringify(removed_user);
   console.log(removedUSerError);
 
-  redis_client.del(tempid.toString());
+
 
   return res.json({ success: true, error: removedUSerError });
 }
@@ -309,7 +308,6 @@ async function role_add(req, res) {
   await User.findByIdAndUpdate(body_user.id_user, update);
 
   let updated_user = await User.find({ _id: body_user.id_user });
-  redis_client.del(body_user.id_user.toString());
   return res.json({ success: true, user: updated_user });
 
 
@@ -335,7 +333,6 @@ async function role_delete(req, res) {
   await User.findByIdAndUpdate(body_user.id_user, update);
 
   let updated_user = await User.find({ _id: body_user.id_user });
-  redis_client.del(body_user.id_user.toString());
   return res.json({ success: true, user: updated_user });
 
 
@@ -373,7 +370,6 @@ async function updateUser(req, res) {
     updatedUser = temp;
   } catch (e) { }
 
-  redis_client.del(_id.toString());
   return res.json({ success: true, updatedUser });//return a json array with users
 }
 
@@ -455,7 +451,6 @@ async function avatar_upload(req, res) {
   // let updatedUser = await User.findByIdAndUpdate(req.user._id, update, { new: true });
 
   // console.log(updatedUser);
-  redis_client.del(req.user._id.toString());
 
   // update path of user, so object id and user file extention
   // send success
@@ -543,7 +538,6 @@ async function avatar_upload_admin(req, res) {
   let updatedUser = await User.findByIdAndUpdate(user_id, update, { new: true });
 
   console.log(updatedUser);
-  redis_client.del(user_id.toString());
 
   // update path of user, so object id and user file extention
   // send success
@@ -671,8 +665,6 @@ async function passwordResetLink(req, res) {
 
   // save to user database 
   await User.findByIdAndUpdate(temp_user._id, temp_user, { upsert: true, new: true });
-  redis_client.del((temp_user._id).toString());
-
 
   // update password reset link as being used 
   resetlink.active = true;

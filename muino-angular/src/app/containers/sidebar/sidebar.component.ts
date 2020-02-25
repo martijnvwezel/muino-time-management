@@ -1,4 +1,4 @@
-import { Component,HostBinding,  OnInit, Input  } from '@angular/core';
+import { Component, HostBinding, OnInit, Input } from '@angular/core';
 import { navItems } from "./../../_nav";
 
 
@@ -9,7 +9,7 @@ import { navItems } from "./../../_nav";
 })
 
 
-export class SidebarComponent implements OnInit{
+export class SidebarComponent implements OnInit {
   public navItems = navItems;
   // @Input() navItems : Array<any>;
   @HostBinding('class.sidebar-nav') true;
@@ -22,18 +22,18 @@ export class SidebarComponent implements OnInit{
   private changes: MutationObserver;
   public element: HTMLElement = document.body;
   public avatar_path = "assets/img/avatars/chicken.jpg";
-  
+
   public enableSideBar = true;
 
-  @Input() user: any ;
+  @Input() user: any;
 
   constructor() {
     // this.renderer.addClass(document.body, 'sidebar-minimized'); private renderer: Renderer2
-    
+
     this.changes = new MutationObserver((mutations) => {
       this.sidebarMinimized = document.body.classList.contains('sidebar-minimized');
       // console.log(this.sidebarMinimized);
-      
+
 
     });
 
@@ -43,17 +43,17 @@ export class SidebarComponent implements OnInit{
 
 
   }
-  
-  public toggleMenu(){
-//         // this.enableSideBar =!this.enableSideBar;
-//         document.body.classList.contains('sidebar-minimized') ?
-//             this.renderer.removeClass( document.body, 'sidebar-minimized') :
-//             this.renderer.addClass( document.body, 'sidebar-minimized');
-        this.sidebarMinimized = !this.sidebarMinimized;
-      }
+
+  public toggleMenu() {
+    //         // this.enableSideBar =!this.enableSideBar;
+    //         document.body.classList.contains('sidebar-minimized') ?
+    //             this.renderer.removeClass( document.body, 'sidebar-minimized') :
+    //             this.renderer.addClass( document.body, 'sidebar-minimized');
+    this.sidebarMinimized = !this.sidebarMinimized;
+  }
 
   ngOnInit() {
-  
+
   }
 
 
@@ -63,15 +63,15 @@ export class SidebarComponent implements OnInit{
     this.sidebarMinimized = !this.sidebarMinimized;
 
   }
-  clearSidebar(){}
+  clearSidebar() { }
 
   public addtosidebar(add_navitem) {
     // Check if element already excists
     // this.navItems = add_navitem;
     this.enableSideBar = false;
     for (let navElem of add_navitem) {
-      for(let element of this.navItems){
-        if (element===navElem){
+      for (let element of this.navItems) {
+        if (element === navElem) {
           return;
         }
       }
@@ -80,22 +80,22 @@ export class SidebarComponent implements OnInit{
     }
 
     // console.log(this.navItems);
-    
+
     this.enableSideBar = true;
   }
 
   isDivider(navItem) {
     return !!navItem.divider
-}
+  }
 
-isTitle(navItem) {
+  isTitle(navItem) {
     return !!navItem.title
-}
+  }
 
-isHasChild(navItem) {
+  isHasChild(navItem) {
     return navItem.hasOwnProperty('children') && navItem.children.length > 0;
-}
+  }
 
-  
+
 
 }
