@@ -145,8 +145,8 @@ async function project_prikklok_get(req, res) {
     let user_assigned_projects = await Project.aggregate([
         {
             $match: {
-                "assigned": { "$in": [_id] }//,
-                //  "status": "active"
+                "assigned": { "$in": [_id] },
+                 "status": "active"
             }
         }
     ]);
