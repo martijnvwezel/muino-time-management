@@ -48,7 +48,7 @@ const localLogin = new LocalStrategy({
       status.type = "error";
       status.causedBy = "(passport.js:48) Cannot find user in database.";
       var ip ="....";// req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-      status.extra = JSON.stringify(user) +";"+ip;
+      status.extra = "User not exist";
       warningCtrl.saveWarning(status);
     }
   }
@@ -60,7 +60,7 @@ const localLogin = new LocalStrategy({
     status.type = "warning";
     status.causedBy = "(passport.js:63) User login failed.";
     var ip ="....";// req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-    status.extra = JSON.stringify(user)+";"+ip;
+    status.extra = JSON.stringify(user.email)+";"+ip;
     warningCtrl.saveWarning(status);
     return done(null, false, { error: 'Your login details could not be verified. Please try again.' });
   }
