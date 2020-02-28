@@ -139,8 +139,8 @@ async function project_detail_get(req, res) {
 
 
 async function project_prikklok_get(req, res) {
-    var _id = req.user._id;
-    console.log(_id);
+    let _id = String(req.user._id);
+    console.log("Project prikklok get: ",_id);
 
     let user_assigned_projects = await Project.aggregate([
         {
