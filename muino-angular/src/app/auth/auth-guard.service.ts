@@ -24,7 +24,7 @@ export class RoleGuardService implements CanActivate {
     const expectedRole = route.data.expectedRole;
     
     if (!exist_role(this.token.getInfoExchange(), expectedRole)) {
-      this.router.navigate(['login']);
+      this.router.navigate(['NoPremissions']);
       return false;
     }
     return true;

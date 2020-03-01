@@ -65,6 +65,6 @@
     "@types/datatables.net": "^1.10.17",
     "@types/jquery": "^3.3.29",
     "codelyzer": "^5.0.1",
-    "typescript": "~3.5.3"
+    "typescript": "^3.5.3"
   }
 }

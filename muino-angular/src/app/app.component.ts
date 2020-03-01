@@ -6,7 +6,7 @@ import { DomSanitizer } from "@angular/platform-browser";
 
 import { AuthService } from './auth/auth.service';
 import { SidebarComponent } from './containers/sidebar/sidebar.component';
-import { time_navItems, time_navItemsAdmin, time_navItemsroles } from "./_nav";
+import { time_navItems, time_navItemsProject, time_navItemsAccounting,time_navItemsroles } from "./_nav";
 import { exist_role } from "./shared/main_functions";
 
 
@@ -66,8 +66,11 @@ export class AppComponent implements OnInit {
 
     tempSidebar.push.apply( tempSidebar,time_navItems);
 
-    if (exist_role(this.user, "admin")) {
-      tempSidebar.push.apply( tempSidebar,time_navItemsAdmin);
+    if (exist_role(this.user, "project")) {
+      tempSidebar.push.apply( tempSidebar,time_navItemsProject);
+    }
+    if (exist_role(this.user, "accounting")) {
+      tempSidebar.push.apply( tempSidebar,time_navItemsAccounting);
     }
 
     tempSidebar.push.apply( tempSidebar,time_navItemsroles);

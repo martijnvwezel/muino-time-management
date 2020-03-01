@@ -108,20 +108,23 @@ const routes: Routes = [
         loadChildren: () => import('./views/warning/warning.module').then(m => m.WarningModule),
         canActivate: [RoleGuardService],
         data: { 
-          expectedRole: 'warning'
+          expectedRole: 'admin'
         } 
       },
       {
         path: "projects",
         loadChildren: () => import('./views/project/project.module').then(m => m.ProjectModule),
-        canActivate: [LogInAsUser]
+        canActivate: [RoleGuardService],
+        data:{
+          expectedRole: 'project'
+        }
       },
       {
         path: "accounting",
         loadChildren: () => import('./views/accounting/accounting.module').then(m => m.AccountingModule),
         canActivate: [RoleGuardService],
         data: { 
-          expectedRole: 'admin'
+          expectedRole: 'accounting'
         } 
       },
       {

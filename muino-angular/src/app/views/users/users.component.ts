@@ -16,8 +16,8 @@ export class UsersComponent implements OnInit, OnDestroy {
 
   public users$: any[];
   // temp. all roles in a list. This needs to be made more robust! (database request?)
-  public RoleTypes$ = ["admin", "warning"]; //"active", "block", "onhold",
-  public accountStatus$ = ["active", "block", "onhold"];
+  // public RoleTypes$ = ["admin", "warning", "project", "accounting", "report"]; //"active", "block", "onhold",
+  // public accountStatus$ = ["active", "block", "onhold"];
   public dataerror = " ";
   public dataerror2 = " ";
   public usersSelect1: string;

@@ -33,7 +33,7 @@ export class ReportsComponent implements OnInit {
     }
     this.generate_filename();
 
-    if ((<any>window).user && ((<any>window).user.roles.indexOf('admin') > -1)) {
+    if ((<any>window).user && ((<any>window).user.roles.indexOf('report') > -1)) {
       this.data.getPriklokUsers().subscribe(data => (this.multiSelectUsers$ = data));
     }
   }

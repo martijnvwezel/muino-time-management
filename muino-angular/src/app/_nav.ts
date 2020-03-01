@@ -17,7 +17,7 @@ export const time_navItems = [
   }
 ];
 
-export const time_navItemsAdmin = [
+export const time_navItemsProject = [
   {
     name: 'Projects',
     url: '/projects',
@@ -29,6 +29,17 @@ export const time_navItemsAdmin = [
     icon: 'fa fa-line-chart'
   }
 ];
+
+
+
+export const time_navItemsAccounting = [
+  {
+    name: 'Accounting',
+    url: '/accounting',
+    icon: 'fa fa-line-chart'
+  }
+];
+
 
 export const time_navItemsroles = [
   {

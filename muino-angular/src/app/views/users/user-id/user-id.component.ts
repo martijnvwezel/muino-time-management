@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
 export class UserIdComponent implements OnInit {
 
   public user = { roles: [], avatar_path: "chicken.jpg" };
-  public RoleTypes$: string[] = ["admin", "warning"];
+  public RoleTypes$: string[] = ["admin", "warning", "project", "accounting", "report"];
   public accountStatus$ = [
     {
       name: "active",
