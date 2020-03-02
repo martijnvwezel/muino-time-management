@@ -57,4 +57,4 @@ For the production of pre-build docker on docker-hub.
 ```
 
 ### Run on the docker
-There are many environments variables, so it will be logical to add those in a docker compose file. Please, checkout docker compose and the `docker-compose.yml`. The  docker compose 
+There are many environments variables, so it will be logical to add those in a docker compose file. Please, checkout docker compose and the `docker-compose.yml`. At the moment documantion is being written, and will be shortly be posted here.
