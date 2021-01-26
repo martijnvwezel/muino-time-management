@@ -222,7 +222,7 @@ async function project_list_get(req, res) {
     let user_assigned_projects = await Project.aggregate([
         {
             $match: {
-                "assigned": { "$in": [_id] }
+                "assigned": { "$in": [String(_id)] }
             }
         }
     ]);
