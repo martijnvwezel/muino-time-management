@@ -20,7 +20,7 @@ import { LogInAsUser, RoleGuardService } from './auth/auth-guard.service';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'profile', //'profile', prikklok
+    redirectTo: 'prikklok',
     pathMatch: 'full',
   }, {
     path: 'auth',

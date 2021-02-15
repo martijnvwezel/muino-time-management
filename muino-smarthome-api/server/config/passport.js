@@ -9,6 +9,11 @@ const userCtrl = require('../controllers/user.controller');
 const User = require('../models/user.model');
 const config = require('./config');
 const warningCtrl = require('../controllers/warning.controller');
+<<<<<<< HEAD
+=======
+// const redis_client = require('./redis');
+
+>>>>>>> dependabot/npm_and_yarn/muino-smarthome-api/assign-deep-0.4.8
 
 const localLogin = new LocalStrategy({
   usernameField: 'email'
@@ -104,6 +109,7 @@ const localLogin = new LocalStrategy({
   status.extra = user.email+";"+ip;
   var ip ="....";// req.headers['x-forwarded-for'] || req.connection.remoteAddress;
   warningCtrl.saveWarning(status);
+  // redis_client.set(user._id.toString(), JSON.stringify(user));
   done(null, user);
 });
 
@@ -112,17 +118,20 @@ const jwtLogin = new JwtStrategy({
   secretOrKey: config.jwtSecret
 }, async (payload, done) => {
   console.log(payload._id );
+  
   let user = await User.findById(payload._id);
-    if (!user) {
-      console.log("user not known");
-      return done(null, false);
-    }
+  if (!user) {
+    console.log("user not known");
+    return done(null, false);
+  }
 
-    user = user.toObject();
-    delete user.hashedPassword;
-    if (user.nSalt) { // backward compatibility
-      delete user.nSalt;
-    }
+  user = user.toObject();
+  delete user.hashedPassword;
+  if (user.nSalt) { // backward compatibility
+    delete user.nSalt;
+  }
+
+
 
 
   done(null, user);
@@ -138,6 +147,30 @@ passport.serializeUser(function (user, done) {
 passport.deserializeUser(function (user, done) {
   done(null, user);
 });
+
+
+// function getRedis(payload_id) {
+//   return new Promise(user => {
+//     // redis_client.get(payload_id.toString(), function (error, result) {
+//       if (error) {
+//         console.log(error);
+//         throw error;
+//       }
+//       try {
+
+//         user(JSON.parse(result));
+
+//       } catch (e) {
+//         console.log("fix the result of redis");
+
+//         user({});
+//       }
+
+//     });
+//   });
+
+// }
+
 
 
 module.exports = passport;

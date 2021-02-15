@@ -12,6 +12,7 @@ const helmet = require('helmet');
 const routes = require('../routes/index.route');
 const config = require('./config');
 const passport = require('./passport')
+// const redis_client = require('./redis');
 const cors = require('cors');
 
 const app = express(); 

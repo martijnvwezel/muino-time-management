@@ -1,8 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
-import { MatIconRegistry } from "@angular/material";
+// import { MatIconRegistry } from "@angular/material";
 import { DomSanitizer } from "@angular/platform-browser";
+
+
+import { MatIconRegistry } from '@angular/material/icon';
+
+
 
 import { AuthService } from './auth/auth.service';
 import { SidebarComponent } from './containers/sidebar/sidebar.component';

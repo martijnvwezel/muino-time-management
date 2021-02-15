@@ -26,30 +26,31 @@
   "dependencies": {
     "bcrypt": "^5.0.0",
     "compression": "^1.7.4",
-    "cookie-parser": "^1.4.4",
+    "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
-    "cron-parser": "^2.13.0",
+    "cron-parser": "^2.16.3",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-async-handler": "^1.1.4",
-    "helmet": "^3.21.2",
+    "hammerjs": "^2.0.8",
+    "helmet": "^4.2.0",
     "joi": "^14.3.1",
     "jsonwebtoken": "^8.5.1",
     "long-timeout": "^0.1.1",
     "method-override": "^3.0.0",
-    "mongoose": "^5.7.10",
-    "morgan": "^1.9.1",
-    "nodemailer": "^6.4.2",
-    "passport": "^0.4.0",
+    "mongoose": "^5.10.11",
+    "morgan": "^1.10.0",
+    "nodemailer": "^6.4.14",
+    "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
-    "redis": "^2.8.0",
-    "sorted-array-functions": "^1.2.0",
-    "update": "^0.7.4",
-    "uuid": "^3.3.3"
+    "redis": "^3.0.2",
+    "sorted-array-functions": "^1.3.0",
+    "uuid": "^8.3.1"
   },
   "devDependencies": {
-    "concurrently": "^4.1.2",
-    "nodemon": "^1.19.4"
+    "@types/hammerjs": "^2.0.38",
+    "concurrently": "^5.3.0",
+    "nodemon": "^2.0.6"
   }
 }

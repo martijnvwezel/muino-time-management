@@ -162,9 +162,9 @@ public picker;
     let tempGroupid;
     const convTimeString = (time_string) => (new Date(time_string).getTime()); // converting string to time
     const getDay = ({ time_start }) => this.weekdays[(!(new Date(time_start).getDay()) ? (6) : (new Date(time_start).getDay() - 1))]; // For getting the day of the week
-    const getHoures = ({ time_start, time_stop }) => ((convTimeString(time_stop) - convTimeString(time_start)) / 3600000); 
-    const getProjectList = (projectname) => (!(this.project_list.indexOf(projectname) == -1) ? this.project_list : this.project_list.concat(projectname)); // add projectname in list
-    const getTaskList = (taskname, tasklist) => (!(tasklist.indexOf(taskname) == -1) ? tasklist : tasklist.concat(taskname)); // add projectname in list
+    const getHoures = ({ time_start, time_stop }) => ((convTimeString(time_stop) - convTimeString(time_start)) / 3600000);
+    const getProjectList = (projectname) => (!(this.project_list.indexOf(projectname) == -1) ? this.project_list : this.project_list.concat(projectname)); // add project-name in list
+    const getTaskList = (taskname, tasklist) => (!(tasklist.indexOf(taskname) == -1) ? tasklist : tasklist.concat(taskname)); // add project-name in list
 
     temp_week = weekData
       .map(event => ({ ...event, logged: { day: getDay(event), [getDay(event)]: getHoures(event), hours: getHoures(event) } }))
@@ -173,15 +173,12 @@ public picker;
           sessions[event.groupid].events.push(event); // * FIX
           sessions[event.groupid][event.logged.day] = event.logged.hours;
           sessions[event.groupid].comment = event.comment ? event.comment : "";
-
-
         } else {
           if (event.groupid) {
             tempGroupid = event.groupid;
-
           } else {
             tempGroupid = uuid.v4();
-            console.warn('groupid doesn\'t excist');
+            console.warn('groupid doesn\'t exist');
           }
 
           if (!event.task_id) {
