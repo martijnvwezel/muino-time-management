@@ -16,20 +16,3 @@ router.route('/').post(asyncHandler(insert));
 async function insert(req, res) {
   return await userCtrl.insert(req, res, "");
 }
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-/week/:id dan krijg je van die week die je kies full json back
-
-
-*/

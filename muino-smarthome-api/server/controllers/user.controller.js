@@ -4,7 +4,7 @@ const Joi = require('joi');
 const fs = require('fs');
 const mongoose = require('mongoose');
 // needed for 
-const uuidv4 = require('uuid/v4');
+const { v4: uuidv4 } = require('uuid');
 const nodemailer = require("nodemailer");
 const config = require('../config/config');
 
