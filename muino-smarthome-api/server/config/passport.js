@@ -9,11 +9,6 @@ const userCtrl = require('../controllers/user.controller');
 const User = require('../models/user.model');
 const config = require('./config');
 const warningCtrl = require('../controllers/warning.controller');
-<<<<<<< HEAD
-=======
-// const redis_client = require('./redis');
-
->>>>>>> dependabot/npm_and_yarn/muino-smarthome-api/assign-deep-0.4.8
 
 const localLogin = new LocalStrategy({
   usernameField: 'email'
