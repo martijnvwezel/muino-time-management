@@ -8,6 +8,23 @@ Some list of URLs
 * [docker hub with latest version](https://hub.docker.com/r/muino/time-management)
 * [telegram](https://t.me/Muinonl)
 
+
+# Feature requests
+* Setting to give a user a selection that it can only submit 24 hours a day.
+* Clockyfi intergration
+* SQL database instead of MongoDB (PostgresSQL; will be the probably been chosen)
+* hour schema instead of starting from `00:00` till `xx:xx`, too `start = (now)` and `end = (now - xx:xx)` 
+* Adding automatically managment api to the backend
+
+
+
+
+
+
+
+
+
+
 # Start developing on Muino
 Note: Node.js should be >10.9, and you should have installed MongoDB.
 ## Installation
@@ -58,3 +75,10 @@ For the production of pre-build docker on docker-hub.
 
 ### Run on the docker
 There are many environments variables, so it will be logical to add those in a docker compose file. Please, checkout docker compose and the `docker-compose.yml`. At the moment documantion is being written, and will be shortly be posted here.
+
+
+
+
+
+
+
