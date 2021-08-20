@@ -8,7 +8,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PrikklokService } from "./prikklok.service";
 import * as uuid from 'uuid';
-import { log } from 'util';
+
 
 
 @Component({

@@ -40,7 +40,14 @@
               "node_modules/jquery/dist/jquery.js",              
               "src/app/vendors/jquery.dataTables.js",
               "node_modules/datatables.net-bs4/js/dataTables.bootstrap4.js"
-            ]
+            ],
+            "aot": false,
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -66,7 +73,8 @@
                 }
               ]
             }
-          }
+          },
+          "defaultConfiguration": ""
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",

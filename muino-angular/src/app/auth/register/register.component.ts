@@ -4,7 +4,7 @@ import { FormGroup, FormBuilder, FormControl, Validators, ValidationErrors } fro
 
 
 import { AuthService } from '../auth.service';
-import { log } from 'util';
+
 
 @Component({
   selector: 'app-register',
