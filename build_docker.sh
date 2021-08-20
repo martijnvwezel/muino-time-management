@@ -26,5 +26,5 @@ echo "$(date)"
 echo "Wait for 5 sec..."
 sleep 5
 
-ssh server   "./scripts-git/docker/muino-smarthome.sh"
-ssh server   "dm"
+ssh muino.nl   "./scripts-git/docker/muino-smarthome.sh"
+ssh muino.nl   "dm"

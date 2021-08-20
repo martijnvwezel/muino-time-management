@@ -1,0 +1,3 @@
+[submodule "muino-automatic-time-tracker"]
+	path = muino-automatic-time-tracker
+	url = ssh://git@gitlab.muino.nl:2222/muino-smarthome/muino-automatic-time-accounting-rust.git
