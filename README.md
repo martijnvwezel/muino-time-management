@@ -14,6 +14,7 @@ Some list of URLs
 * Clockyfi intergration
 * SQL database instead of MongoDB (PostgresSQL; will be the probably been chosen)
 * hour schema instead of starting from `00:00` till `xx:xx`, too `start = (now)` and `end = (now - xx:xx)` 
+* Adding automatically managment api to the backend
 
 
 
