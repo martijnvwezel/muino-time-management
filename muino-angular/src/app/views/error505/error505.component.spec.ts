@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { Error505Component } from './error505.component';
 
@@ -6,7 +6,7 @@ describe('Error505Component', () => {
   let component: Error505Component;
   let fixture: ComponentFixture<Error505Component>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ Error505Component ]
     })
