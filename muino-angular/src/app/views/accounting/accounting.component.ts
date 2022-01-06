@@ -58,10 +58,11 @@ export class AccountingComponent implements OnInit {
   ngOnInit() {
 
     this.year_array = [];
-    for (let i = Number(this.thisyear) - 1; i < Number(this.thisyear) + 5; i++) {
+    // for (let i = Number(this.thisyear) - 1; i < Number(this.thisyear) + 5; i++) {
+    // TODO make this smarter 
+    for (let i = 2019; i < Number(this.thisyear) + 5; i++) {
       this.year_array.push(String(i));
     }
-
     // this.data.getAccounting(new Date().getTime()).subscribe((data) => {
     //   this.ACCOUNTING$ = data;
     //   this.account_overview = data.user_assigned_project;
