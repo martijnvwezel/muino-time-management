@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 @Injectable({ // needed
     providedIn: 'root'
 })
-export class PrikklokService {
+export class HeaderService {
 
     constructor(private http: HttpClient) { }
     public getproject(): Observable<any> {

@@ -6,6 +6,7 @@ import { AuthService } from '../../auth/auth.service';
 import { exist_role, Replace } from "./../../shared/main_functions";
 import { BuildNumber } from "../../../buildnumber";
 import { UsersService } from './../../views/users/users.service';
+import { HeaderService } from "./header.service";
 
 @Component({
   selector: 'app-header_',
@@ -28,7 +29,7 @@ export class HeaderComponent implements OnInit {
   public active_projects = [];
   public timer_started = false;
   public timer_time = "0:00.00";
-  private timer_start_time = null;
+  public timer_start_time = (new Date()).getTime();
 
   @Input() user: any = {};
 
@@ -50,7 +51,7 @@ export class HeaderComponent implements OnInit {
     private data: UsersService,
     private router: Router,
     private el: ElementRef,
-    private dataPrikklok: PrikklokService
+    private dataPrikklok: HeaderService
 
   ) { }
 
@@ -103,10 +104,9 @@ export class HeaderComponent implements OnInit {
         }
       }
 
+    });
 
 
-    // update_time(date_new: Date):
-    setInterval(this.update_time, 0.1, new Date());
 
   }
 
@@ -152,22 +152,25 @@ export class HeaderComponent implements OnInit {
 
 
   timer_fun(): void{
-    this.timer_started = true;
+    this.timer_started = ! this.timer_started;
 
-    this.timer_start_time = new Date();
+    this.timer_start_time = (new Date()).getTime();
+    console.log(this.timer_start_time)
 
-    this.update_time(new Date())
 
-
+    // update_time(date_new: Date):
+    setInterval(this.update_time, 0.3);
   }
 
 
 
-  update_time(date_now: Date): void {
-
-
-    let delta = date_now.getTime() - this.timer_start_time.getTime();
-    let date_new = new Date(delta)
+  update_time(date_now: Date = new Date()): void {
+    // console.log(date_now)
+    if (this.timer_started == false) {
+      return;
+    }
+    let delta = date_now.getTime() - this.timer_start_time;
+    let date_new = new Date(delta);
     let hour = date_new.getHours();
     let minut = date_new.getMinutes();
     let sec = date_new.getSeconds();

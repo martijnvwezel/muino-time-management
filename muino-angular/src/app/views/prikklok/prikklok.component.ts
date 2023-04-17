@@ -1,5 +1,5 @@
 /**
- * TODO fix when task is removed the system cannot find something back anymore 
+ * TODO fix when task is removed the system cannot find something back anymore
  * TODO add automaticly a new row
  * TODO Deactivate like the login button the save button
  */
@@ -23,12 +23,11 @@ export class PrikklokComponent implements OnInit {
   public weekSelectText = String((new Date()).getFullYear()) + "-W" + String(this.getWeek(new Date()) < 10 ?"0"+this.getWeek(new Date()): this.getWeek(new Date())  );
   public loading = false;
   public active_projects = []; // when a new row is added this list will be added for the projects
-public picker;
-
-// test123(){console.log("-> ",this.picker);}
+  public picker;
 
 
-  public data: any[] = []; // * week data  
+
+  public data: any[] = []; // * week data
   private PROJECTS$: any;
   private project_list = []; // * this is used to select new projects
   private ProjectWithSubTasks = [];
@@ -55,7 +54,7 @@ public picker;
 
   ngOnInit() {
     // console.log(this.getWeekProto(new Date()));
-    // * set date of each week day  
+    // * set date of each week day
     this.set_week_dates(new Date());
 
     // * get projects and tasks
@@ -67,10 +66,10 @@ public picker;
 
         if(this.PROJECTS$[i].status === "active"){
           this.active_projects.push(this.PROJECTS$[i].project_name);
-        }        
-      }    
+        }
+      }
 
-      this.setProjectTaskList(); // * fill list with tasks and project 
+      this.setProjectTaskList(); // * fill list with tasks and project
       this.get_week_data(); // * where get events is stated
       this.update();
     });
@@ -102,8 +101,8 @@ public picker;
           continue;
         }
         let idy = this.PROJECTS$[i].sub_tasks[j]._id;
-       
-        
+
+
         taskids[idy] = {
           project_name: this.PROJECTS$[i].project_name,
           project_id: this.PROJECTS$[i]._id,
@@ -133,12 +132,12 @@ public picker;
     this.counter = { mo: 0, tu: 0, we: 0, th: 0, fr: 0, sa: 0, su: 0, total: 0 };
 
     for (let idx in this.data) {
-      // * adding project lists 
+      // * adding project lists
       if (!this.data[idx].project_name) {
         this.data[idx]['project'] = this.project_list;
       }
 
-      // * adding total to the end 
+      // * adding total to the end
       let total = 0;
       this.weekdays.forEach(element => {
         if (this.data[idx][element]) {
@@ -240,7 +239,7 @@ public picker;
 
     const checkTaskID = (element, event) => (element.task_id !== event.task_id);
     const checkComment = (element, event) => ((element.comment) && (element.comment !== event.comment));
-    const checkHoures = (element, event, day) => ((element[day] == 0) || element[day] !== event.logged[day]); // * There was an issue with everywhere zero out of nothing.. 
+    const checkHoures = (element, event, day) => ((element[day] == 0) || element[day] !== event.logged[day]); // * There was an issue with everywhere zero out of nothing..
     const checkGroupID = (event) => (!event.groupid)
 
 
@@ -262,7 +261,7 @@ public picker;
 
 
             if (sameEvent && (checkHoures(element, sameEvent, day) || checkComment(element, sameEvent) || checkTaskID(element, sameEvent) || checkGroupID(sameEvent))) {
-              // this thould be the update part 
+              // this thould be the update part
               let tempEvent = {
                 time_start: (new Date(sameEvent.time_start)).getTime(),
                 time_stop: this.addhoures(sameEvent.time_start, element[day]),
@@ -281,8 +280,8 @@ public picker;
               // * new event
               // console.log({time_start: this.week[day].getTime()});
               // console.log({time_stop: this.addhoures(this.week[day], element[day])});
-              
-              
+
+
               let newEvent = {
                 user_id: user_id,
                 task_id: element.task_id,//this.get_task_id(element.project_name, element.task_name),
@@ -337,15 +336,15 @@ public picker;
     this.loading = false;
     let date = this.get_week_date(Number(this.weekSelectText.split("-W")[0]), this.weekSelect1);
     // console.log(new Date(date).toLocaleDateString(),  this.weekSelect1  );
-    
+
 
     this.set_week_dates(new Date(date));
     this.get_week_data(); // * where get events is stated
     // console.log(this.week);
-  } 
+  }
 
-  
-  
+
+
 
   public set_week(befaft) {
     if (befaft == -1 || befaft == 1) {
@@ -362,7 +361,7 @@ public picker;
   private set_week_year(year, week, minplus) {
     // helps checking if the date is still valid
     // console.log(year, " -- ", week, " -- ", minplus);
-    
+
     let yearstr = "";
     let weekstr = "";
     if (9 < (week + minplus) && (week + minplus) < 53) {
@@ -371,10 +370,10 @@ public picker;
     } else if (0 < (week + minplus) && (week + minplus) < 10) {
       yearstr = String(year);
       weekstr = "0" + String(week + minplus);
-    } else if ((week + minplus) < 1) { // * when [week 1]-1=0 so december of year before 
+    } else if ((week + minplus) < 1) { // * when [week 1]-1=0 so december of year before
       yearstr = String(year - 1);
       weekstr = String(52);
-    } else { // * for new year or old year      
+    } else { // * for new year or old year
       yearstr = String(year+minplus);
       weekstr = "01";
     }
@@ -439,7 +438,7 @@ public picker;
   private set_week_dates(date) {
     // * date is set to zero so adding 24 houres is not a problem
 
-    
+
     date = new Date(date.getFullYear(), date.getMonth(), date.getDate());
 
     this.week.mo = new Date(date.setDate(date.getDate() - date.getDay() + 1));// the plus is correction
@@ -454,20 +453,20 @@ public picker;
 
   private get_week_date(yearno, weekno) {
     // console.log("year: ",  yearno, "   week: ", weekno);
-    
+
     let dag = (weekno-1)*7 + 1; // 7 days for each week
     let monday = new Date(yearno, 0, dag);
     monday = new Date(monday.setDate(monday.getDate() - monday.getDay() + 1));
     // console.log("monday: "+ monday);
     return monday;
-    
+
     // let onejan = new Date(yearno, 0, 1);
     // console.log();
-    
+
     // let day = ((weekno * 7) - 1 ) * 86400000 + Number(onejan); // ! UNKNONW BEHAVIOR REMOVED
     // second -7 is of the day monday
     // console.log(new Date(day).toLocaleDateString(),  weekno  );
-    
+
     // return monday;
   }
 
