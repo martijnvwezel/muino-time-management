@@ -35,6 +35,41 @@
       <a class="nav-link">{{BuildNumbernumber}}</a>
     </li> -->
   </ul>
+
+
+  <ul class="nav navbar-nav  ml-auto">
+
+      <!-- <mat-form-field>
+        <mat-label>Pick Project </mat-label>
+        <mat-select [(value)]="data[week_project.key].project_name" (selectionChange)="changeTask()">
+          <mat-option *ngFor="let optionProject of active_projects"
+            [value]="optionProject">
+            {{optionProject}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Pick Task</mat-label>
+        <mat-select [(value)]="data[week_project.key].task_name" (selectionChange)="changeTaskID()">
+          <mat-option *ngFor="let optionTask of data[week_project.key].task_list " [value]="optionTask">
+            {{optionTask}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field> -->
+
+
+    <li class="nav-item px-3">
+      <a class="nav-link" (click)="timer_fun()">Start</a>
+    </li>
+
+  <li class="nav-item px-3">
+     <a>{{timer_time}}</a>
+    </li>
+
+  </ul>
+
+
   <ul class="nav navbar-nav ml-auto">
     <li class="nav-item dropdown" dropdown placement="bottom right">
       <a class="nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"
@@ -53,7 +88,7 @@
           <i class="fa fa-envelope-o"></i> Messages<span class="badge badge-success">0</span>
         </a> -->
         <a class="dropdown-item" routerLink="/users" routerLinkActive="active" *ngIf="user.isAdmin">
-          <i class="fa fa-envelope-o"></i>Users 
+          <i class="fa fa-envelope-o"></i>Users
           <!-- <span class="badge badge-success">{{users_total}}</span> -->
         </a>
         <!-- <div class="dropdown-header text-center"><strong>Settings</strong></div> -->

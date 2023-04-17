@@ -25,6 +25,11 @@ export class HeaderComponent implements OnInit {
   public BuildNumbernumber = BuildNumber.number;
   public total_users = 0.;
 
+  public active_projects = [];
+  public timer_started = false;
+  public timer_time = "0:00.00";
+  private timer_start_time = null;
+
   @Input() user: any = {};
 
   @Input() fixed: boolean;
@@ -44,7 +49,8 @@ export class HeaderComponent implements OnInit {
     private authService: AuthService,
     private data: UsersService,
     private router: Router,
-    private el: ElementRef
+    private el: ElementRef,
+    private dataPrikklok: PrikklokService
 
   ) { }
 
@@ -54,7 +60,7 @@ export class HeaderComponent implements OnInit {
     console.log("Buildnumber: ", this.BuildNumbernumber);
 
 
-  
+
 
     if (exist_role(this.user, 'dashboard')) {
       this.dashboard_exist = true;
@@ -64,7 +70,7 @@ export class HeaderComponent implements OnInit {
       // this.data.getAllUsers().subscribe(data => this.users_total = data.length);
 
       this.users_total = this.data.total_size_users;
-    } 
+    }
 
     if (this.user.avatar_path && this.user.avatar_path.length > 4) {
       this.image_foto = this.image_location + this.user.avatar_path;
@@ -73,17 +79,34 @@ export class HeaderComponent implements OnInit {
     }
 
     if (this.user.company_Path && this.user.company_Path.length > 4) {
-      // this.navbarBrand = {src: 'assets/img/brand/sygnet.svg', width: 30, height: 30, alt: 'Muino logo'};  
+      // this.navbarBrand = {src: 'assets/img/brand/sygnet.svg', width: 30, height: 30, alt: 'Muino logo'};
       this.navbarBrandFull = { src: 'assets/img/brand/' + this.user.company_Path, width: 150, height: 50, alt: 'Muino' };
       this.navbarBrandMinimized = { src: 'assets/img/brand/sygnet.svg', width: 50, height: 50, alt: 'Muino' };
     } else {
-      // this.navbarBrand = {src: 'assets/img/brand/sygnet.svg', width: 30, height: 30, alt: 'Muino logo'};  
+      // this.navbarBrand = {src: 'assets/img/brand/sygnet.svg', width: 30, height: 30, alt: 'Muino logo'};
       this.navbarBrandFull = { src: 'assets/img/brand/logo.svg', width: 150, height: 50, alt: 'Muino' };
       this.navbarBrandMinimized = { src: 'assets/img/brand/sygnet.svg', width: 50, height: 50, alt: 'Muino' };
     }
 
     Replace(this.el);
     this.isFixed(this.fixed);
+
+
+
+
+    // * get projects and tasks
+    this.dataPrikklok.getproject().subscribe(data => {
+     let PROJECTS$ = data;
+      for (let i in PROJECTS$) {
+        if(PROJECTS$[i].status === "active"){
+          this.active_projects.push(PROJECTS$[i].project_name);
+        }
+      }
+
+
+
+    // update_time(date_new: Date):
+    setInterval(this.update_time, 0.1, new Date());
 
   }
 
@@ -125,6 +148,33 @@ export class HeaderComponent implements OnInit {
   breakpoint(breakpoint: any): void {
     console.log(breakpoint);
     return breakpoint ? breakpoint : '';
+  }
+
+
+  timer_fun(): void{
+    this.timer_started = true;
+
+    this.timer_start_time = new Date();
+
+    this.update_time(new Date())
+
+
+  }
+
+
+
+  update_time(date_now: Date): void {
+
+
+    let delta = date_now.getTime() - this.timer_start_time.getTime();
+    let date_new = new Date(delta)
+    let hour = date_new.getHours();
+    let minut = date_new.getMinutes();
+    let sec = date_new.getSeconds();
+
+
+    this.timer_time = hour + ":" + minut; //+"."+sec;
+    console.log(this.timer_time)
   }
 
 }
