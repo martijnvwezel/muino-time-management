@@ -97,9 +97,9 @@ export class HeaderComponent implements OnInit {
 
     // * get projects and tasks
     this.dataPrikklok.getproject().subscribe(data => {
-     let PROJECTS$ = data;
+      let PROJECTS$ = data;
       for (let i in PROJECTS$) {
-        if(PROJECTS$[i].status === "active"){
+        if (PROJECTS$[i].status === "active") {
           this.active_projects.push(PROJECTS$[i].project_name);
         }
       }
@@ -151,10 +151,10 @@ export class HeaderComponent implements OnInit {
   }
 
 
-  timer_fun(): void{
-    this.timer_started = ! this.timer_started;
+  timer_fun(): void {
+    this.timer_started = !this.timer_started;
 
-    this.timer_start_time = (new Date()).getTime();
+
     console.log(this.timer_start_time)
 
 
@@ -165,6 +165,9 @@ export class HeaderComponent implements OnInit {
 
 
   update_time(date_now: Date = new Date()): void {
+    if (this.timer_start_time == undefined) {
+      this.timer_start_time = (new Date()).getTime();
+    }
     // console.log(date_now)
     if (this.timer_started == false) {
       return;
