@@ -62,7 +62,7 @@ export class PrikklokComponent implements OnInit {
       this.PROJECTS$ = data;
       for (let i in this.PROJECTS$) {
         this.project_list.push(this.PROJECTS$[i].project_name);
-        // console.log(this.PROJECTS$[i]); // active_projects
+        console.log(this.PROJECTS$[i]); // active_projects
 
         if(this.PROJECTS$[i].status === "active"){
           this.active_projects.push(this.PROJECTS$[i].project_name);

@@ -1,13 +1,13 @@
 import { Component, OnInit, Input, ElementRef } from '@angular/core';
-
 import { Router } from '@angular/router';
+import { BehaviorSubject, interval, Observable, Subscription } from 'rxjs';
+
 import { AuthService } from '../../auth/auth.service';
-// import { Observable } from 'rxjs';
 import { exist_role, Replace } from "./../../shared/main_functions";
 import { BuildNumber } from "../../../buildnumber";
 import { UsersService } from './../../views/users/users.service';
 import { HeaderService } from "./header.service";
-
+import { HashLocationStrategy } from '@angular/common';
 @Component({
   selector: 'app-header_',
   templateUrl: './header.component.html',
@@ -30,6 +30,15 @@ export class HeaderComponent implements OnInit {
   public timer_started = false;
   public timer_time = "0:00.00";
   public timer_start_time = (new Date()).getTime();
+
+  // * Selected project part
+  public selected_project: string = "";
+  public all_project_info: any[];
+  public selected_project_tasks: any[];
+  public selected_task_name: string = "";
+
+
+
 
   @Input() user: any = {};
 
@@ -56,6 +65,7 @@ export class HeaderComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
 
 
     console.log("Buildnumber: ", this.BuildNumbernumber);
@@ -98,13 +108,54 @@ export class HeaderComponent implements OnInit {
     // * get projects and tasks
     this.dataPrikklok.getproject().subscribe(data => {
       let PROJECTS$ = data;
-      for (let i in PROJECTS$) {
-        if (PROJECTS$[i].status === "active") {
-          this.active_projects.push(PROJECTS$[i].project_name);
-        }
-      }
-
+      this.all_project_info = PROJECTS$;
+      // for (let i in PROJECTS$) {
+      //   if (PROJECTS$[i].status === "active") {
+      //     this.active_projects.push(PROJECTS$[i].project_name);
+      //   }
+      // }
+      this.changeTaskList();
     });
+
+
+
+
+
+
+  }
+
+
+
+  public changeTaskList() {
+    let newlistproject = [];
+    let newlistsubtasks = [];
+    this.selected_project_tasks = [];
+
+    for (let i in this.all_project_info) {
+      if (this.all_project_info[i].status === "active") {
+        this.active_projects.push(this.all_project_info[i].project_name);
+      }
+    }
+    if (this.selected_project == "") {
+      this.selected_project = this.active_projects[0];
+    }
+    for (let i in this.all_project_info) {
+      if (this.all_project_info[i].project_name === this.selected_project) {
+        newlistsubtasks = this.all_project_info[i].sub_tasks;
+      }
+    }
+
+    this.selected_project_tasks = newlistsubtasks;
+
+    // * if no task has been select use this
+    if (this.selected_task_name == "") {
+      this.selected_task_name = this.selected_project_tasks[0].task_name;
+    }
+
+
+
+    console.log(this.selected_project_tasks);
+
 
 
 
@@ -154,33 +205,45 @@ export class HeaderComponent implements OnInit {
   timer_fun(): void {
     this.timer_started = !this.timer_started;
 
+    if (this.timer_started) {
+      this.timer_start_time = (new Date()).getTime();
+      // * Send to backend that timer is started
+      let start_json = {
+        selected_project: this.selected_project,
+        selected_project_tasks: this.selected_project_tasks,
+        timer_start: this.timer_start_time,
+      };
+      // TODO start endpoint
+    } else {
+      let start_json = {
+        selected_project: this.selected_project,
+        selected_project_tasks: this.selected_project_tasks,
+        timer_start: this.timer_start_time,
+      };
+      // TODO add stop endpoint
+    }
 
-    console.log(this.timer_start_time)
+    interval(1000).subscribe(x => {
+      if (this.timer_started) {
+        this.update_time(this.timer_start_time);
+      }
+    });
 
-
-    // update_time(date_new: Date):
-    setInterval(this.update_time, 0.3);
   }
 
 
 
-  update_time(date_now: Date = new Date()): void {
-    if (this.timer_start_time == undefined) {
-      this.timer_start_time = (new Date()).getTime();
-    }
-    // console.log(date_now)
+  update_time(timer_start_time: number, date_now: Date = new Date()): void {
     if (this.timer_started == false) {
       return;
     }
-    let delta = date_now.getTime() - this.timer_start_time;
+    let delta = date_now.getTime() - timer_start_time;
     let date_new = new Date(delta);
-    let hour = date_new.getHours();
-    let minut = date_new.getMinutes();
+    let hour = (date_new.getHours() < 10 ? '0' : '') + String(date_new.getHours() - 1);
+    let minut = (date_new.getMinutes() < 10 ? '0' : '') + String(date_new.getMinutes());
     let sec = date_new.getSeconds();
 
-
-    this.timer_time = hour + ":" + minut; //+"."+sec;
-    console.log(this.timer_time)
+    this.timer_time = hour + ":" + minut + "." + sec;
   }
 
 }

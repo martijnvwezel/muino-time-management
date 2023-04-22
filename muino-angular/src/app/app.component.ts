@@ -66,8 +66,6 @@ export class AppComponent implements OnInit {
 
 
   private update_users() {
-    console.log("update sidebar");
-    console.log(this.user);
     let tempSidebar = [];
 
     tempSidebar.push.apply(tempSidebar, time_navItems);

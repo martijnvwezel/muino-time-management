@@ -8,14 +8,14 @@ import { UsersRoutingModule } from './users-routing.module';
 import { DataTablesModule } from 'angular-datatables';
 import { UsersService } from "./users.service";
 
-import { MatLegacyAutocompleteModule as MatAutocompleteModule } from '@angular/material/legacy-autocomplete';
-import { MatLegacyButtonModule as MatButtonModule } from '@angular/material/legacy-button';
-import { MatLegacyCheckboxModule as MatCheckboxModule } from '@angular/material/legacy-checkbox';
+import {MatAutocompleteModule } from '@angular/material/autocomplete';
+import {MatButtonModule } from '@angular/material/button';
+import {MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRippleModule } from '@angular/material/core';
 import { MatDividerModule } from '@angular/material/divider';
-import { MatLegacyFormFieldModule as MatFormFieldModule } from '@angular/material/legacy-form-field';
-import { MatLegacyInputModule as MatInputModule } from '@angular/material/legacy-input';
-import {MatLegacySelectModule as MatSelectModule } from '@angular/material/legacy-select';
+import {MatFormFieldModule } from '@angular/material/form-field';
+import {MatInputModule } from '@angular/material/input';
+import {MatSelectModule } from '@angular/material/select';
 import { UserIdComponent } from './user-id/user-id.component';
 
 
@@ -31,7 +31,7 @@ import { UserIdComponent } from './user-id/user-id.component';
     CommonModule,
     DataTablesModule,
 
-    
+
     MatAutocompleteModule,
     MatDividerModule,
     MatButtonModule,
@@ -40,7 +40,7 @@ import { UserIdComponent } from './user-id/user-id.component';
     MatInputModule,
     MatCheckboxModule,
     MatSelectModule
-  ] 
-  
+  ]
+
 })
 export class UsersModule { }

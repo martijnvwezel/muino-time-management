@@ -8,6 +8,8 @@ import 'hammerjs';
 
 if (environment.production) {
   enableProdMode();
+} else {
+
 }
 
 platformBrowserDynamic().bootstrapModule(AppModule)

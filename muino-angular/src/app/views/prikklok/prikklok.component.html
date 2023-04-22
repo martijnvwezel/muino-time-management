@@ -25,7 +25,7 @@
 
 
 
-      <!-- 
+      <!--
     <div class="row">
       <label class="col-md-3 col-form-label" for="multiple-select">Username </label>
       <div class="col-md-3">
@@ -37,25 +37,13 @@
 
       <div class="row">
         <div class="col">
-          <!-- <div class="col-sm-1"> -->
-          <button class="btn  btn-outline-secondary width-pre" (click)="set_week(-1)">
-            < </button> <!-- </div> -->
+          <button class="btn  btn-outline-secondary width-pre" (click)="set_week(-1)"> < </button>
 
-              <!-- <div class="col-sm-3"> -->
               <mat-form-field class="width-weekchoice" (change)="set_week(0)">
                 <input matInput type="week" [(ngModel)]="weekSelectText">
-
               </mat-form-field>
-              <!-- </div> -->
-              <!-- <mat-form-field>
-              <input matInput [matDatepicker]="picker" placeholder="Choose a date"  (click)="test123()" >
-              <mat-datepicker-toggle matSuffix [for]="picker"  ></mat-datepicker-toggle>
-              <mat-datepicker #picker></mat-datepicker>
-            </mat-form-field>
-             -->
 
-              <button class="btn btn-outline-secondary width-next" (click)="set_week(1)"> > </button>
-
+          <button class="btn btn-outline-secondary width-next" (click)="set_week(1)"> > </button>
         </div>
       </div>
 
@@ -145,8 +133,8 @@
                 </mat-form-field>
               </td>
               <td>
-                <mat-form-field class="width-tb"><input matInput type="number" [(ngModel)]="data[week_project.key].we">
-                </mat-form-field>
+               <input matInput  class="width-tb" type="number" [(ngModel)]="data[week_project.key].we">
+
               </td>
               <td>
                 <mat-form-field class="width-tb"><input matInput type="number" [(ngModel)]="data[week_project.key].th">

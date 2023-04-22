@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { DefaultLayoutComponent } from './containers/default-layout/default-layout.component';
+import { DefaultLayoutComponent } from './containers/default-layout.component';
 
 import { Error404Component } from './views/error404/error404.component';
 import { Error505Component } from './views/error505/error505.component';
@@ -66,7 +66,7 @@ const routes: Routes = [
     data: {
       title: 'Password Reset Page'
     }
-  },  
+  },
   {
     path: 'password-reset/:id',
     component: PasswordResetComponent,
@@ -94,22 +94,22 @@ const routes: Routes = [
         path: "users",
         loadChildren: () => import('./views/users/users.module').then(m => m.UsersModule),
         canActivate: [RoleGuardService],
-        data: { 
+        data: {
           expectedRole: 'admin'
-        } 
+        }
       },
             {
         path: "profile",
         loadChildren: () => import('./views/profile/profile.module').then(m => m.ProfileModule),
-        canActivate: [LogInAsUser]       
+        canActivate: [LogInAsUser]
       },
       {
         path: "warning",
         loadChildren: () => import('./views/warning/warning.module').then(m => m.WarningModule),
         canActivate: [RoleGuardService],
-        data: { 
+        data: {
           expectedRole: 'admin'
-        } 
+        }
       },
       {
         path: "projects",
@@ -123,9 +123,9 @@ const routes: Routes = [
         path: "accounting",
         loadChildren: () => import('./views/accounting/accounting.module').then(m => m.AccountingModule),
         canActivate: [RoleGuardService],
-        data: { 
+        data: {
           expectedRole: 'accounting'
-        } 
+        }
       },
       {
         path: "reports",
@@ -137,7 +137,7 @@ const routes: Routes = [
         loadChildren: () => import('./views/prikklok/prikklok.module').then(m => m.PrikklokModule),
         canActivate: [LogInAsUser]
       }
-    ] 
+    ]
   }, {
     path: '**',
     component: Error404Component,

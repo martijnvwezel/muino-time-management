@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 // import { Subscription } from 'rxjs/Subscription';
-import { AuthService } from './../../auth/auth.service';
-import { TokenStorage } from './../../auth/token.storage';
+import { AuthService } from '../auth/auth.service';
+import { TokenStorage } from '../auth/token.storage';
 @Component({
   selector: 'app-default-layout',
   templateUrl: './default-layout.component.html',

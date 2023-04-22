@@ -25,13 +25,22 @@ import { AuthModule } from './auth/auth.module';
 // import { AuthComponent } from './auth/auth-routing.module';
 
 // default container
-import { DefaultLayoutComponent } from './containers/default-layout/default-layout.component';
+import { DefaultLayoutComponent } from './containers/default-layout.component';
 import { HeaderComponent } from './containers/header/header.component';
 import { BreadcrumbComponent } from './containers/breadcrumb/breadcrumb.component';
 import { SidebarComponent } from './containers/sidebar/sidebar.component';
 import { RightsidebarComponent } from './containers/rightsidebar/rightsidebar.component';
 import { FooterComponent } from './containers/footer/footer.component';
 
+
+
+
+import { MatRippleModule } from '@angular/material/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatSelectModule } from '@angular/material/select';
+import {MatNativeDateModule} from '@angular/material/core';
 
 
 
@@ -44,7 +53,7 @@ const APP_CONTAINERS = [
   BreadcrumbComponent
 ];
 
-// coreui lib 
+// coreui lib
 import {
   AppAsideModule,
   AppBreadcrumbModule,
@@ -88,44 +97,54 @@ import {
 //   MatToolbarModule,
 //   MatTooltipModule
 // } from '@angular/material';
-// // import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+// import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 
-// const MATERIAL_CONTAINERS = [
-//   MatAutocompleteModule,
-//   MatButtonModule,
-//   MatButtonToggleModule,
-//   MatCardModule,
-//   MatCheckboxModule,
-//   MatChipsModule,
-//   MatDatepickerModule,
-//   MatDialogModule,
-//   MatExpansionModule,
-//   MatGridListModule,
-//   MatIconModule,
-//   MatInputModule,
-//   MatFormFieldModule,
-//   MatListModule,
-//   MatMenuModule,
-//   MatNativeDateModule,
-//   MatPaginatorModule,
-//   MatProgressBarModule,
-//   MatProgressSpinnerModule,
-//   MatRadioModule,
-//   MatRippleModule,
-//   MatSelectModule,
-//   MatSidenavModule,
-//   MatSliderModule,
-//   MatSlideToggleModule,
-//   MatSnackBarModule,
-//   MatSortModule,
-//   MatStepperModule,
-//   MatTableModule,
-//   MatTabsModule,
-//   MatToolbarModule,
-//   MatTooltipModule  
-// ];
 
+const MATERIAL_CONTAINER_SEL = [
+  MatFormFieldModule,
+  MatRippleModule,
+  MatInputModule,
+  MatSelectModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+];
+/*
+const MATERIAL_CONTAINERS = [
+  MatAutocompleteModule,
+  MatButtonModule,
+  MatButtonToggleModule,
+  MatCardModule,
+  MatCheckboxModule,
+  MatChipsModule,
+  MatDatepickerModule,
+  MatDialogModule,
+  MatExpansionModule,
+  MatGridListModule,
+  MatIconModule,
+  MatInputModule,
+  MatFormFieldModule,
+  MatListModule,
+  MatMenuModule,
+  MatNativeDateModule,
+  MatPaginatorModule,
+  MatProgressBarModule,
+  MatProgressSpinnerModule,
+  MatRadioModule,
+  MatRippleModule,
+  MatSelectModule,
+  MatSidenavModule,
+  MatSliderModule,
+  MatSlideToggleModule,
+  MatSnackBarModule,
+  MatSortModule,
+  MatStepperModule,
+  MatTableModule,
+  MatTabsModule,
+  MatToolbarModule,
+  MatTooltipModule
+];
+*/
 
 
 
@@ -170,11 +189,11 @@ import { ChartsModule } from 'ng2-charts';
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
     ChartsModule,
-    // ...MATERIAL_CONTAINERS,
+    ...MATERIAL_CONTAINER_SEL,
     AppRoutingModule // Prefere to be last: https://angular.io/guide/router#module-import-order-matters
 
   ],
-  // exports:[...MATERIAL_CONTAINERS],
+  exports:[...MATERIAL_CONTAINER_SEL],
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: AuthHeaderInterceptor,

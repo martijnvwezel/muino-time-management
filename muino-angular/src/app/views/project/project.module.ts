@@ -11,21 +11,21 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { DataTablesModule } from 'angular-datatables';
 
-import { MatLegacyAutocompleteModule as MatAutocompleteModule } from '@angular/material/legacy-autocomplete';
-import { MatLegacyButtonModule as MatButtonModule } from '@angular/material/legacy-button';
-import { MatLegacyCheckboxModule as MatCheckboxModule } from '@angular/material/legacy-checkbox';
+import { MatAutocompleteModule as MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatButtonModule as MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule as MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRippleModule } from '@angular/material/core';
 import { MatDividerModule } from '@angular/material/divider';
-import { MatLegacyFormFieldModule as MatFormFieldModule } from '@angular/material/legacy-form-field';
-import { MatLegacyInputModule as MatInputModule } from '@angular/material/legacy-input';
+import { MatFormFieldModule as MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule as MatInputModule } from '@angular/material/input';
 
 
-import {MatLegacySelectModule as MatSelectModule } from '@angular/material/legacy-select';
+import {MatSelectModule as MatSelectModule } from '@angular/material/select';
 
 
 
 @NgModule({
-  bootstrap: [ 
+  bootstrap: [
     ProjectComponent,
     ProjectidComponent,
     ProjectnewComponent,
@@ -37,7 +37,7 @@ import {MatLegacySelectModule as MatSelectModule } from '@angular/material/legac
     ProjectComponent,
     ProjectidComponent,
     ProjectnewComponent,
-    TasknewComponent, 
+    TasknewComponent,
     EditprojectComponent,
     EdittaskComponent
   ],
