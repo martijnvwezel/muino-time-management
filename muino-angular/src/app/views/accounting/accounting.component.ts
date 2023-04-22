@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountingService } from "./accounting.service";
-import { stringify } from '@angular/compiler/src/util';
 
 
 
@@ -73,20 +72,20 @@ export class AccountingComponent implements OnInit {
     //   }
 
     //   this.ACCOUNTING_PROJECT$ = this.convert_to_project_array(data.user_assigned_project);
-    
+
     //   this.ACCOUNTING_USER$ = this.convert_to_user_array(data.user_assigned_project);
 
     //   this.ACCOUNTING_OVERVIEW$ = this.convert_to_overview_array(data);
 
     //   console.log(this.ACCOUNTING_PROJECT$);
     //   console.log(this.ACCOUNTING_USER$);
-      
+
     //   this.convert_project_select(data.user_assigned_project);
-    //   
+    //
 
     // });
     this.change_year_project(1);
-    
+
 
 
 
@@ -111,7 +110,7 @@ export class AccountingComponent implements OnInit {
     let project = accounting_data.find(elem => (elem._id == String(this.projectSelect1)));
     // console.log(this.user_list$);
     let weekTotal = {total: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0, 10: 0, 11: 0, 12: 0, 13: 0, 14: 0, 15: 0, 16: 0, 17: 0, 18: 0, 19: 0, 20: 0, 21: 0, 22: 0, 23: 0, 24: 0, 25: 0, 26: 0, 27: 0, 28: 0, 29: 0, 30: 0, 31: 0, 32: 0, 33: 0, 34: 0, 35: 0, 36: 0, 37: 0, 38: 0, 39: 0, 40: 0, 41: 0, 42: 0, 43: 0, 44: 0, 45: 0, 46: 0, 47: 0, 48: 0, 49: 0, 50: 0, 51: 0, 52: 0, 53:0};
-    
+
     if (!project) {// otherwise when no data excist errors occure
       return final_array;
     }
@@ -120,7 +119,7 @@ export class AccountingComponent implements OnInit {
       let task_obj = {
         task_name: task.task_name,
         total: 0,
-        
+
       };
 
       let user_array = [];
@@ -146,7 +145,7 @@ export class AccountingComponent implements OnInit {
         task_obj[event.week] += event.hours;
         task_obj['total'] += event.hours;
 
-        weekTotal[event.week] += event.hours; 
+        weekTotal[event.week] += event.hours;
         weekTotal.total += event.hours;
       }
 
@@ -201,8 +200,8 @@ export class AccountingComponent implements OnInit {
             project_obj[event.week] += event.hours;
             project_obj['total'] += event.hours;
 
-            
-            weekTotal[event.week] += event.hours; 
+
+            weekTotal[event.week] += event.hours;
             weekTotal.total += event.hours;
           }
         }
@@ -224,7 +223,7 @@ export class AccountingComponent implements OnInit {
   };
 
 
-  
+
 
 private convert_project_select(data){
   this.projects$ = [];
@@ -239,7 +238,7 @@ private convert_project_select(data){
 
 
 
-  // * overview for user overview that also counts the total number of each array 
+  // * overview for user overview that also counts the total number of each array
   private convert_to_overview_array(accounting_data) {
     // TODO add something that count for the projects
 
@@ -304,7 +303,7 @@ private convert_project_select(data){
 
 
 
-  // * get the total number of hours of a task, but update this incremental 
+  // * get the total number of hours of a task, but update this incremental
   public increment_total_hours() {
     this.total_hours_task = {};
     for (const task of this.project_week_no$) {
@@ -331,14 +330,14 @@ private convert_project_select(data){
     this.data.getAccounting_project_info(this.projectSelect1).subscribe(data => {
       this.project_week_no$ = data.sub_tasks;
       this.increment_total_hours();
-      // console.log(data);      
+      // console.log(data);
     });
 
   }
 
   public change_year_project(init) {
 
-    // ! overview, project and users 
+    // ! overview, project and users
     this.data.getAccounting(new Date().setFullYear(Number(this.thisyear))).subscribe((data) => {
       this.ACCOUNTING$ = data;
       this.account_overview = data.user_assigned_project;
@@ -355,10 +354,10 @@ private convert_project_select(data){
         this.projectSelect1 = this.projects$[0]._id;
       }
       // * set the data field in the webpage
-      this.ACCOUNTING_PROJECT$ = this.convert_to_project_array(data.user_assigned_project);      
+      this.ACCOUNTING_PROJECT$ = this.convert_to_project_array(data.user_assigned_project);
       this.ACCOUNTING_USER$ = this.convert_to_user_array(data.user_assigned_project);
       this.ACCOUNTING_OVERVIEW$ = this.convert_to_overview_array(data);
-      
+
     });
 
 

@@ -20,12 +20,13 @@
   "license": "SEE LICENSE IN LICENSE",
   "dependencies": {
     "@angular/animations": "^15.2.8",
-    "@angular/cdk": "^14.2.7",
+    "@angular/cdk": "^15.2.8",
     "@angular/common": "^15.2.8",
     "@angular/core": "^15.2.8",
+    "@angular/flex-layout": "^15.0.0-beta.42",
     "@angular/forms": "^15.2.8",
     "@angular/language-service": "^15.2.8",
-    "@angular/material": "^14.2.7",
+    "@angular/material": "^15.2.8",
     "@angular/platform-browser": "^15.2.8",
     "@angular/platform-browser-dynamic": "^15.2.8",
     "@angular/router": "^15.2.8",
@@ -67,7 +68,7 @@
     "@types/datatables.net": "^1.10.24",
     "@types/hammerjs": "^2.0.41",
     "@types/jquery": "^3.5.16",
-    "codelyzer": "^6.0.2",
+    "codelyzer": "^0.0.28",
     "typescript": "~4.9.5"
   }
 }
