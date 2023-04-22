@@ -12,7 +12,7 @@ const routes: Routes = [
         }
     },
     {
-        path: ':id/edit', 
+        path: ':id/edit',
         component: UserIdComponent,
         data: {
             title: 'User edit'

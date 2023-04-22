@@ -19,11 +19,11 @@ export class UserIdComponent implements OnInit {
     {
       name: "active",
       description: "Full functionalities for the website."
-    }, 
+    },
     {
       name:"block",
       description: "Let user only have a visable profile page."
-    }, 
+    },
     {
       name: "onhold",
       description: "Block any login interaction with the server."
@@ -97,7 +97,7 @@ export class UserIdComponent implements OnInit {
   private set_user_profiel(element) {
 
     // TODO moet even hiernaa gaan kijken
-    // reset values, set values of user in the form 
+    // reset values, set values of user in the form
     let userprofiel;
     userprofiel = element;
 
@@ -136,13 +136,13 @@ export class UserIdComponent implements OnInit {
   public submitUserProfiel() {
     this.loading = true;
 
-    if (!this.userPorfielForm || this.userPorfielForm.invalid){ 
+    if (!this.userPorfielForm || this.userPorfielForm.invalid){
       this.loading = false;
       this.dataerror = "Check all inputs again.";
       return;
     }
 
-    // console.log(this.userPorfielForm.value); // ! was this because values didn't change ? 
+    // console.log(this.userPorfielForm.value); // ! was this because values didn't change ?
 
     this.data.updateUser_v2(this.useridchangeform, this.userPorfielForm.value, this.statusSelect).subscribe(data => { this.dataerror = data.error; });
 
@@ -152,19 +152,19 @@ export class UserIdComponent implements OnInit {
       this.loading = false;
     }, 500); // * give feeling that something happend
 
-   
+
   }
 
   private submit_roles() {
 
-    // * Add role 
-    this.rolesSelect.forEach(element => { 
+    // * Add role
+    this.rolesSelect.forEach(element => {
       if (!(this.user.roles.find(e => e === element))) {
         this.data.add_role(this.useridchangeform, element).subscribe(data => (this.set_user_profiel(data[0])));
       }
     });
 
-    // * Remove role 
+    // * Remove role
     this.user.roles.forEach(element => {
       if (!(this.rolesSelect.find(e => e === element))) {
         this.data.remove_role(this.useridchangeform, element).subscribe(data => (this.set_user_profiel(data[0])));
