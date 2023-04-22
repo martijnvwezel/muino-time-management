@@ -4,11 +4,9 @@ WORKDIR /usr/src/app
 ADD muino-angular/ /usr/src/app
 
 RUN npm install --production
-RUN npm rebuild node-sass
-RUN npm install --save bcrypt@3.0.6
-RUN npm install -g @angular/cli
+j
 
-RUN npm run build 
+RUN npm run build
 
 FROM mhart/alpine-node:latest
 
@@ -23,7 +21,7 @@ RUN npm i -g npm
 
 
 RUN mkdir dist/ || true
-COPY --from=builder /usr/src/app/dist/ /usr/src/app/dist/ 
+COPY --from=builder /usr/src/app/dist/ /usr/src/app/dist/
 RUN ls -la /usr/src/app/dist/
 RUN npm install --production
 RUN npm rebuild bcrypt --build-from-source || true
