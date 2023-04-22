@@ -15,11 +15,11 @@ const passport = require('./passport')
 // const redis_client = require('./redis');
 const cors = require('cors');
 
-const app = express(); 
+const app = express();
 // app.use(compression());
 
 
-if (config.env === 'development' && false) {//disabled
+if (config.env === 'development' && false) { // disabled
   // create a write stream (in append mode)
   var accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' })
   app.use(logger(':date[clf] :remote-addr :method :url :status :response-time ms :res[content-length] :remote-user', { stream: accessLogStream }));//, { stream: accessLogStream }
@@ -29,14 +29,14 @@ if (config.env === 'development' && false) {//disabled
 }
 
 // Choose what fronten framework to serve the dist from
-if ( config.env == 'development') {
+if (config.env == 'development') {
   var distDir = '../../../muino-angular/dist/muino';
 } else {
   var distDir = '../../dist/muino/';
-} 
+}
 
 
-if(!config.disable_static_serve){
+if (!config.disable_static_serve) {
   app.use(express.static(path.join(__dirname, distDir)))
   app.use(/^((?!(api)).)*/, (req, res) => {
     res.sendFile(path.join(__dirname, distDir + '/index.html'));
@@ -44,7 +44,7 @@ if(!config.disable_static_serve){
 }
 
 
-app.use(bodyParser.json({limit: '6mb' })); // profile image limit is 5MB 
+app.use(bodyParser.json({ limit: '6mb' })); // profile image limit is 5MB
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -87,6 +87,7 @@ app.use((err, req, res, next) => {
     message: err.message
   });
   next(err);
+  console.log("33");
 });
 
 module.exports = app;

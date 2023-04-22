@@ -1,8 +1,8 @@
 
 # Muino Time Management
-The Muino Time Management/ accounting tool for keeping track of your hours on projects and tasks.  
+The Muino Time Management/ accounting tool for keeping track of your hours on projects and tasks.
 
-# URLs 
+# URLs
 Some list of URLs
 * [Sales webpage for companies](https://sales.muino.nl)
 * [docker hub with latest version](https://hub.docker.com/r/muino/time-management)
@@ -13,7 +13,7 @@ Some list of URLs
 * Setting to give a user a selection that it can only submit 24 hours a day.
 * Clockyfi intergration
 * SQL database instead of MongoDB (PostgresSQL; will be the probably been chosen)
-* hour schema instead of starting from `00:00` till `xx:xx`, too `start = (now)` and `end = (now - xx:xx)` 
+* hour schema instead of starting from `00:00` till `xx:xx`, too `start = (now)` and `end = (now - xx:xx)`
 * Adding automatically managment api to the backend
 
 
@@ -28,7 +28,7 @@ Some list of URLs
 # Start developing on Muino
 Note: Node.js should be >10.9, and you should have installed MongoDB.
 ## Installation
-``` bash 
+``` bash
 cd muino-angular/
 npm install
 
@@ -44,17 +44,24 @@ cp .env.example .env
 
 ## Developing
 Note: Node.js should be >10.9, and you should have installed MongoDB.
-``` bash 
+``` bash
 # running in the same terminal (not recommended)
-sudo /usr/bin/mongod --unixSocketPrefix=/var/lib/mongodb --config /etc/mongod.conf & 
+sudo /usr/bin/mongod --unixSocketPrefix=/var/lib/mongodb --config /etc/mongod.conf &
 
-# running in a different terminal 
-sudo /usr/bin/mongod --unixSocketPrefix=/var/lib/mongodb --config /etc/mongod.conf 
+# running in a different terminal
+sudo /usr/bin/mongod --unixSocketPrefix=/var/lib/mongodb --config /etc/mongod.conf
 # Note: can be mongodb.conf
 ```
 
+db.createUser({user: "root", pwd: "password", roles: [{role: "userAdminAnyDatabase", db: "admin"}]})
+<!-- C:\Program Files\MongoDB\Server\4.4\bin\mongod.cfg -->
 
-``` bash 
+disable firewall
+
+mongodb://192.168.1.152:27017
+
+
+``` bash
 cd muino-smarthome-api/
 
 
@@ -62,13 +69,13 @@ npm run start # This command build the frontend and start the backend
 
 ```
 ## ADMIN user
-Register with the following email adress to the account: `martijnvwezel@muino.nl` for admin rights. 
+Register with the following email adress to the account: `martijnvwezel@muino.nl` for admin rights.
 
 
 ## Production
 ### Build a docker
 For the production of pre-build docker on docker-hub.
-``` bash 
+``` bash
 ./build_docker.sh
 
 ```
