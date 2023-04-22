@@ -102,7 +102,7 @@ export class AuthService {
 
       if (!tokenVal) {
         // When token empty no user data request should be made.
-        // because he request a new 
+        // because he request a new
         console.log("Token not found me()");
         observer.complete();
         return;

@@ -9,7 +9,7 @@
     "nodeserve": "nodemon server",
     "anguwatch": "npm  run --prefix ../muino-angular watch",
     "start2": "concurrently  -c \"yellow.bold,green.bold\" -n \"SERVER,BUILD\" 'npm run nodeserve' 'anguwatch' ",
-    "start": "concurrently  -c \"yellow.bold,green.bold\" -n \"SERVER,BUILD\" \"nodemon server\" \"npm  run --prefix ../muino-angular watch\" "
+    "start": "concurrently  -c \"yellow.bold,green.bold\" -n \"SERVER,FRONTEND\" \"nodemon server\" \"npm  run --prefix ../muino-angular watch\" "
   },
   "repository": {
     "type": "git",

@@ -354,9 +354,12 @@ private convert_project_select(data){
         this.projectSelect1 = this.projects$[0]._id;
       }
       // * set the data field in the webpage
+      console.log("awefaf");
+      console.log("awefaf");
       this.ACCOUNTING_PROJECT$ = this.convert_to_project_array(data.user_assigned_project);
       this.ACCOUNTING_USER$ = this.convert_to_user_array(data.user_assigned_project);
       this.ACCOUNTING_OVERVIEW$ = this.convert_to_overview_array(data);
+
 
     });
 

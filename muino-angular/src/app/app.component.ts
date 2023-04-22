@@ -11,7 +11,7 @@ import { MatIconRegistry } from '@angular/material/icon';
 
 import { AuthService } from './auth/auth.service';
 import { SidebarComponent } from './containers/sidebar/sidebar.component';
-import { time_navItems, time_navItemsProject, time_navItemsAccounting,time_navItemsroles } from "./_nav";
+import { time_navItems, time_navItemsProject, time_navItemsAccounting, time_navItemsroles } from "./_nav";
 import { exist_role } from "./shared/main_functions";
 
 
@@ -34,7 +34,7 @@ export class AppComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private sidebar: SidebarComponent) {}
+    private sidebar: SidebarComponent) { }
 
   //
 
@@ -48,7 +48,7 @@ export class AppComponent implements OnInit {
     this.userSubscription = this.authService.$userSource.subscribe((user) => {
       this.user = user;
       this.update_users();
-      
+
     });
 
 
@@ -57,29 +57,32 @@ export class AppComponent implements OnInit {
   navigate(link): void {
     this.router.navigate([link]);
   }
-    
+
   ngOnDestroy() {
     if (this.userSubscription) {
       this.userSubscription.unsubscribe();
     }
   }
 
-  
+
   private update_users() {
-    // console.log("update sidebar");
+    console.log("update sidebar");
+    console.log(this.user);
     let tempSidebar = [];
 
-    tempSidebar.push.apply( tempSidebar,time_navItems);
+    tempSidebar.push.apply(tempSidebar, time_navItems);
 
     if (exist_role(this.user, "project")) {
-      tempSidebar.push.apply( tempSidebar,time_navItemsProject);
-    }
-    if (exist_role(this.user, "accounting")) {
-      tempSidebar.push.apply( tempSidebar,time_navItemsAccounting);
+      tempSidebar.push.apply(tempSidebar, time_navItemsProject);
+    } else {
+      if (exist_role(this.user, "accounting")) {
+        tempSidebar.push.apply(tempSidebar, time_navItemsAccounting);
+      }
+
     }
 
-    tempSidebar.push.apply( tempSidebar,time_navItemsroles);
-    
+    tempSidebar.push.apply(tempSidebar, time_navItemsroles);
+
     this.sidebar.addtosidebar(tempSidebar);
 
 

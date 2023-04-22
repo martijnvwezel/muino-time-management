@@ -29,6 +29,10 @@ export class UsersComponent implements OnInit, OnDestroy {
   public submitted = false;
   public usersTable = true;
   public updating = true;
+
+  public WEFWEFW = true;
+
+
   private subscription: Subscription;
 
 
@@ -44,7 +48,7 @@ export class UsersComponent implements OnInit, OnDestroy {
   }
 
 
-// * newly added 
+// * newly added
   public UserSearchRequest: String ;
 
 
@@ -87,12 +91,12 @@ export class UsersComponent implements OnInit, OnDestroy {
               element.isAdmin=true;
             }
             if(element.roles && element.roles.length >0){
-              
+
             }else{
               element.roles_str = element.roles;
             }
             // delete element.roles;
-     
+
           });
           this.updating = true;
           this.users$ = data;
@@ -112,8 +116,8 @@ export class UsersComponent implements OnInit, OnDestroy {
         if (this.users$[i]._id === this.usersSelect1) {
           this.data.setRole(this.users$[i].fullname, this.usersSelect1, this.rolesSelect1, this.removecheckbox1).subscribe(
             data_return => {
-              $('#DataTables').DataTable().destroy();// clean the datatable when new data is added 
-              // TODO $.fn['dataTable'].ext.search.pop();  or this cmd i dont know yet untested 
+              $('#DataTables').DataTable().destroy();// clean the datatable when new data is added
+              // TODO $.fn['dataTable'].ext.search.pop();  or this cmd i dont know yet untested
               // Fix for chrome version: Version 71.0.3578.98 (Official build) (64-bits)
               data_return.forEach(element => {
                 element.roles_str = element.roles.toString().split(',').join(' ');
@@ -166,16 +170,16 @@ export class UsersComponent implements OnInit, OnDestroy {
 
 
   private set_user_profiel(user_id, users) {
-    // reset values, set values of user in the form 
+    // reset values, set values of user in the form
     let userprofiel;
     for(let element of users){
       if(element._id===user_id){
         userprofiel = element;
         console.log(element);
-        
+
         break;
       }
-      
+
     }
 
     this.userPorfielForm.reset;
@@ -269,7 +273,7 @@ export class UsersComponent implements OnInit, OnDestroy {
 // * show a  nice readable string for the user
   public clean_date(createdAt){
     return new Date(createdAt).toDateString();
-  
+
   }
 
 
