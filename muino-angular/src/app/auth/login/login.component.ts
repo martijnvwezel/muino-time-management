@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormGroup, FormBuilder, FormControl, Validators, ValidationErrors } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, UntypedFormControl, Validators, ValidationErrors } from '@angular/forms';
 // import { first } from 'rxjs/operators';
 
 import { AuthService } from '../auth.service';
@@ -13,7 +13,7 @@ import { AuthService } from '../auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  loginForm: FormGroup;
+  loginForm: UntypedFormGroup;
   loading = false;
   submitted = false;
   //returnUrl: string;
@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   error_submit= false ;
   error_string: string;
   constructor(
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private authService: AuthService,
     private router: Router) {
 
@@ -39,8 +39,8 @@ export class LoginComponent implements OnInit {
 
     
     this.loginForm = this.formBuilder.group({
-      email: new FormControl('', [Validators.required]),//, Validators.email
-      password: new FormControl('', [Validators.required])
+      email: new UntypedFormControl('', [Validators.required]),//, Validators.email
+      password: new UntypedFormControl('', [Validators.required])
 
 
 

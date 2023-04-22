@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import {
-  FormGroup, FormControl,
-  FormBuilder, Validators
+  FormGroup, UntypedFormControl,
+  UntypedFormBuilder, Validators
 } from '@angular/forms';
 // import * as Handsontable from 'handsontable';
 import { ProjectService } from './project.service';
@@ -40,7 +40,7 @@ export class ProjectComponent implements OnInit, OnDestroy {
     _id: "5ced954c6f6f1e006dbf9565"
   }];
 
-  area = new FormControl('', [
+  area = new UntypedFormControl('', [
     Validators.required,
   ]);
 
@@ -63,7 +63,7 @@ export class ProjectComponent implements OnInit, OnDestroy {
   // * This part is for change user premissions to users off a project
   public dataerror = " ";
 
-  constructor(private data: ProjectService, private builder: FormBuilder) { }
+  constructor(private data: ProjectService, private builder: UntypedFormBuilder) { }
 
   ngOnInit() {
     this.user = (<any>window).user;

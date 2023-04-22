@@ -1,5 +1,5 @@
 import { Component, OnInit,OnDestroy,  EventEmitter } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl, Validators, ValidationErrors } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, FormControl, Validators, ValidationErrors } from '@angular/forms';
 import { Router, ActivatedRoute  } from '@angular/router';
 import { Location  } from "@angular/common";
 import { TaskService } from './task.service';
@@ -11,7 +11,7 @@ import { TaskService } from './task.service';
   styleUrls: ['./tasknew.component.scss']
 })
 export class TasknewComponent implements OnInit,OnDestroy {
-  public NewTaskForm: FormGroup;
+  public NewTaskForm: UntypedFormGroup;
   public loading = false;
   public submitted = false;
   public error_submit = false;
@@ -23,7 +23,7 @@ export class TasknewComponent implements OnInit,OnDestroy {
   public StatusType$ = ["started","stopped"];
 
 
-  constructor(private formBuilder: FormBuilder,
+  constructor(private formBuilder: UntypedFormBuilder,
     private route: ActivatedRoute , 
     private router: Router, 
     private taskService: TaskService,

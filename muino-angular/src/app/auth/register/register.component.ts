@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormGroup, FormBuilder, FormControl, Validators, ValidationErrors } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, UntypedFormControl, Validators, ValidationErrors } from '@angular/forms';
 
 
 import { AuthService } from '../auth.service';
@@ -22,7 +22,7 @@ export class RegisterComponent implements OnInit {
 
 
   constructor(
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private authService: AuthService,
     private router: Router) {
     // redirect to home if already logged in
@@ -41,19 +41,19 @@ export class RegisterComponent implements OnInit {
 
 
 
-  passwordsMatchValidator(control: FormControl): ValidationErrors {
+  passwordsMatchValidator(control: UntypedFormControl): ValidationErrors {
     let password = control.root.get('password');
     return password && control.value !== password.value ? {
       passwordMatch: true
     } : null;
   }
 
-  userForm = new FormGroup({
-    firstName: new FormControl('', [Validators.required]),
-    email: new FormControl('', [Validators.required, Validators.email]),
-    username: new FormControl('', [Validators.required]),
-    password: new FormControl('', [Validators.required, Validators.minLength(6)]),
-    repeatPassword: new FormControl('', [Validators.required, this.passwordsMatchValidator])
+  userForm = new UntypedFormGroup({
+    firstName: new UntypedFormControl('', [Validators.required]),
+    email: new UntypedFormControl('', [Validators.required, Validators.email]),
+    username: new UntypedFormControl('', [Validators.required]),
+    password: new UntypedFormControl('', [Validators.required, Validators.minLength(6)]),
+    repeatPassword: new UntypedFormControl('', [Validators.required, this.passwordsMatchValidator])
   })
 
   // get fullname(): any { return this.userForm.get('fullname'); }

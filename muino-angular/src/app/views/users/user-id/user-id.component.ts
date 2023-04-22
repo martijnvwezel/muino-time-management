@@ -1,6 +1,6 @@
 
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl, Validators, ValidationErrors } from '@angular/forms';
+import { UntypedFormGroup, FormBuilder, UntypedFormControl, Validators, ValidationErrors } from '@angular/forms';
 import { UsersService } from './../users.service';
 import { exist_role } from "./../../../shared/main_functions";
 import { ActivatedRoute } from '@angular/router';
@@ -65,30 +65,30 @@ export class UserIdComponent implements OnInit {
   get f() { return this.userPorfielForm.controls; }
 
 
-  passwordsMatchValidator(control: FormControl): ValidationErrors {
+  passwordsMatchValidator(control: UntypedFormControl): ValidationErrors {
     let password = control.root.get('password');
     return password && control.value !== password.value ? {
       passwordMatch: true
     } : null;
   }
 
-  userPorfielForm = new FormGroup({
-    fullname: new FormControl('', [Validators.required]),
+  userPorfielForm = new UntypedFormGroup({
+    fullname: new UntypedFormControl('', [Validators.required]),
     // firstname: new FormControl('', [Validators.required]),
     // lastname: new FormControl(''),
-    username: new FormControl('', [Validators.required]),
-    phonenumber: new FormControl(''),
-    email: new FormControl('', [Validators.required, Validators.email]),
-    avatar_path: new FormControl(''),
-    company_Path: new FormControl(''),
-    company: new FormControl(''),
-    location: new FormControl(''),
-    hourrate: new FormControl(''),
-    bot_id: new FormControl(''),
-    api_token: new FormControl(''),
-    chat_id: new FormControl(''),
-    password: new FormControl('', [Validators.minLength(6)]),
-    repeatPassword: new FormControl('', [this.passwordsMatchValidator])
+    username: new UntypedFormControl('', [Validators.required]),
+    phonenumber: new UntypedFormControl(''),
+    email: new UntypedFormControl('', [Validators.required, Validators.email]),
+    avatar_path: new UntypedFormControl(''),
+    company_Path: new UntypedFormControl(''),
+    company: new UntypedFormControl(''),
+    location: new UntypedFormControl(''),
+    hourrate: new UntypedFormControl(''),
+    bot_id: new UntypedFormControl(''),
+    api_token: new UntypedFormControl(''),
+    chat_id: new UntypedFormControl(''),
+    password: new UntypedFormControl('', [Validators.minLength(6)]),
+    repeatPassword: new UntypedFormControl('', [this.passwordsMatchValidator])
 
   })
 

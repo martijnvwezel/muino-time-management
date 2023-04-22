@@ -1,5 +1,5 @@
 import { Component, OnInit, EventEmitter } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl, Validators, ValidationErrors } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, FormControl, Validators, ValidationErrors } from '@angular/forms';
 import { Router } from '@angular/router';
 // import {NgbDate, NgbCalendar} from '@ng-bootstrap/ng-bootstrap';
 // import { NgOption } from '@ng-select/ng-select';
@@ -13,7 +13,7 @@ import { formatDate } from '@angular/common';
   styleUrls: ['./projectnew.component.scss']
 })
 export class ProjectnewComponent implements OnInit {
-  public NewProjectForm: FormGroup;
+  public NewProjectForm: UntypedFormGroup;
   public loading = false;
   public submitted = false;
   public error_submit = false;
@@ -45,7 +45,7 @@ export class ProjectnewComponent implements OnInit {
 
 
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private projectService: ProjectService) {
+  constructor(private formBuilder: UntypedFormBuilder, private router: Router, private projectService: ProjectService) {
 
 
     this.NewProjectForm = this.formBuilder.group({

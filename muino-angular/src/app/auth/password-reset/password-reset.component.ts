@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormGroup, FormBuilder, FormControl, Validators, ValidationErrors } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, UntypedFormControl, Validators, ValidationErrors } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 
 import { AuthService } from '../auth.service';
@@ -22,7 +22,7 @@ export class PasswordResetComponent implements OnInit {
 
 
   constructor(
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private authService: AuthService,
     private router: Router,
     private route: ActivatedRoute) { }
@@ -39,14 +39,14 @@ export class PasswordResetComponent implements OnInit {
 
   }
 
-  public resetForm = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.minLength(6)]),
-    repeatPassword: new FormControl('', [this.passwordsMatchValidator])
+  public resetForm = new UntypedFormGroup({
+    email: new UntypedFormControl('', [Validators.required, Validators.email]),
+    password: new UntypedFormControl('', [Validators.minLength(6)]),
+    repeatPassword: new UntypedFormControl('', [this.passwordsMatchValidator])
   })
 
 
-  public passwordsMatchValidator(control: FormControl): ValidationErrors {
+  public passwordsMatchValidator(control: UntypedFormControl): ValidationErrors {
     let password = control.root.get('password');
     return password && control.value !== password.value ? {
       passwordMatch: true
